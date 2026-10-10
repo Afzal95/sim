@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Simra Naz &amp; Mohd Altamash — Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage:#9ea88f; --sage-dark:#344034; --sage-deep:#273126;
+    --cream:#f3eedf; --paper:#eee8d7; --gold:#8a7452;
+    --gold-light:#b7a27b; --ink:#3f493e;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box;color-scheme:light}
+  html,body{margin:0;min-height:100%;background:var(--sage);font-family:Georgia,"Times New Roman",serif}
+  body{overflow:hidden}
+  button{font:inherit}
+  .app{
+    height:100dvh; overflow-y:auto; overflow-x:hidden;
+    scroll-snap-type:y mandatory; scroll-behavior:smooth;
+    background:
+      radial-gradient(ellipse at 50% 12%,rgba(245,240,220,.42),transparent 38%),
+      linear-gradient(135deg,#9ea88f,#aeb79e 48%,#929d83);
+  }
+  .page{
+    position:relative; min-height:100dvh; scroll-snap-align:start;
+    display:flex; align-items:center; justify-content:center;
+    padding:42px 24px 72px; overflow:hidden;
+  }
+  .page::before,.page::after{
+    content:""; position:absolute; inset:18px; border:1px solid rgba(72,76,55,.38);
+    pointer-events:none;
+  }
+  .page::after{inset:27px;border-color:rgba(244,239,218,.55)}
+  .content{position:relative;z-index:2;width:min(100%,480px);text-align:center}
+  .botanical{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .leaf{position:absolute;width:120px;height:36px;border-radius:100% 0 100% 0;
+    background:linear-gradient(135deg,rgba(52,64,52,.2),rgba(255,255,255,.05));
+    transform:rotate(-32deg);filter:blur(.1px)
+  }
+  .leaf:nth-child(1){left:-38px;top:18%;transform:rotate(35deg)}
+  .leaf:nth-child(2){right:-45px;top:27%;transform:rotate(145deg)}
+  .leaf:nth-child(3){left:-52px;bottom:22%;transform:rotate(8deg)}
+  .leaf:nth-child(4){right:-40px;bottom:15%;transform:rotate(178deg)}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:.28em;font-size:11px;color:#5f593f;
+    margin-bottom:18px;animation:rise .9s both
+  }
+  .script{
+    font-family:"Brush Script MT","Segoe Script",cursive;
+    color:#344034;text-shadow:0 2px 8px rgba(255,255,255,.45);
+    font-size:clamp(58px,15vw,82px);line-height:.9;font-weight:400;
+  }
+  .amp{font-size:34px;color:#59451f;margin:10px 0}
+  .names{font-family:Georgia,serif;text-transform:uppercase;letter-spacing:.16em;color:#4b4d38}
+  .names .n{font-size:clamp(29px,8vw,42px);display:block;line-height:1.05}
+  .names .and{font-family:cursive;text-transform:none;font-size:26px;color:var(--gold);margin:-1px 0}
+  .divider{display:flex;align-items:center;gap:8px;width:150px;margin:26px auto}
+  .divider span{height:1px;flex:1;background:linear-gradient(90deg,transparent,#59451f,transparent)}
+  .diamond{width:7px;height:7px;border:1px solid #59451f;transform:rotate(45deg)}
+  .date{font-size:17px;letter-spacing:.18em;text-transform:uppercase;color:#4b513e}
+  .hero-card{
+    background:rgba(245,240,222,.18);border:1px solid rgba(80,76,52,.28);
+    padding:34px 24px;box-shadow:0 18px 50px rgba(42,49,39,.12);
+    backdrop-filter:blur(2px)
+  }
+  h2{margin:0 0 18px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+     font-size:20px;color:#3d4739}
+  p{color:#4f5647;line-height:1.7;margin:8px 0}
+  .venue{font-size:25px;color:#3e473a;margin:10px 0}
+  .time{letter-spacing:.15em;font-size:14px;text-transform:uppercase}
+  .countdown{display:flex;justify-content:center;gap:10px;margin:25px 0}
+  .unit{min-width:64px;padding:12px 5px;border:1px solid rgba(88,76,49,.28);background:rgba(245,240,222,.28)}
+  .unit b{display:block;font-size:25px;font-weight:400;color:#394235}
+  .unit small{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#66624e}
+  .btn{
+    border:1px solid #665238;background:#3f493e;color:#f4efdf;
+    padding:13px 23px;letter-spacing:.12em;text-transform:uppercase;font-size:11px;
+    cursor:pointer;transition:.25s;box-shadow:0 8px 20px rgba(42,49,39,.16)
+  }
+  .btn:hover{transform:translateY(-2px);background:#303a30}
+  .rsvp{
+    display:grid;grid-template-columns:1fr;gap:9px;max-width:300px;margin:20px auto 0
+  }
+  input,textarea,select{
+    width:100%;padding:12px;border:1px solid rgba(78,75,54,.3);
+    background:rgba(255,251,239,.5);color:#394235;outline:none
+  }
+  textarea{resize:vertical;min-height:80px}
+  .note{font-size:12px;color:#686652;margin-top:14px}
+  .seal{
+    width:78px;height:78px;border-radius:50%;border:1px solid rgba(92,73,37,.55);
+    display:grid;place-items:center;margin:0 auto 25px;
+    color:#59451f;font-family:Georgia,serif;font-size:13px;letter-spacing:.1em;
+    box-shadow:inset 0 0 0 5px rgba(239,234,216,.3)
+  }
+  .closing{font-family:cursive;font-size:37px;color:#394235}
+  .smallcaps{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#65624f}
+  .invitation-hosts{max-width:430px;margin:0 auto;font-size:clamp(14px,3.8vw,17px);line-height:1.65;letter-spacing:.015em;color:#4f5647;text-transform:none}
+  .groom-parentage{display:block;margin-top:8px;font-family:Georgia,serif;font-size:clamp(13px,3.5vw,16px);line-height:1.4;letter-spacing:.04em;text-transform:none;color:#5f593f}
+  .toast{
+    position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);
+    opacity:0;background:#344034;color:#f3eedf;padding:11px 18px;font:12px Arial,sans-serif;
+    letter-spacing:.04em;z-index:20;transition:.3s;pointer-events:none
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+  .arrow{
+    position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+    z-index:4;border:0;background:transparent;color:#4d5848;font-size:20px;cursor:pointer;
+    animation:bob 1.8s infinite
+  }
+  .reveal{opacity:0;transform:translateY(28px);filter:blur(5px)}
+  .page.visible .reveal{animation:reveal .9s cubic-bezier(.22,1,.36,1) forwards}
+  .page.visible .d1{animation-delay:.12s}.page.visible .d2{animation-delay:.24s}
+  .page.visible .d3{animation-delay:.36s}.page.visible .d4{animation-delay:.48s}
+  @keyframes reveal{to{opacity:1;transform:none;filter:blur(0)}}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
+  @media(max-width:380px){.page{padding-left:18px;padding-right:18px}.unit{min-width:57px}}
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+  }
+
+  /* Opening cover / door intro */
+  .intro-page{padding:0;background:var(--sage)}
+  .intro-cover{
+    position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;
+    background:linear-gradient(135deg,#9ea88f,#aeb79e 48%,#929d83);
+    cursor:pointer;overflow:hidden;color:inherit
+  }
+  .intro-cover::before{
+    content:"";position:absolute;inset:18px;border:1px solid rgba(72,76,55,.38);
+    z-index:5;pointer-events:none
+  }
+  .intro-cover::after{
+    content:"";position:absolute;inset:27px;border:1px solid rgba(244,239,218,.55);
+    z-index:5;pointer-events:none
+  }
+  .intro-cover.playing .intro-poster{opacity:0;transition:opacity .35s ease}
+  .intro-click-overlay{position:absolute;inset:0;z-index:6}
+  .cover-hint{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    z-index:4;display:flex;flex-direction:column;align-items:center;
+    gap:16px;transition:opacity .3s ease
+  }
+  .cover-names{
+    color:#344034;font-family:"Brush Script MT","Segoe Script",cursive;
+    font-size:clamp(46px,12vw,72px);line-height:.9;
+    text-shadow:0 2px 8px rgba(255,255,255,.55);white-space:nowrap
+  }
+  .cover-names span{color:#8a7452;font-size:.62em;margin:0 5px}
+  .cover-open{
+    padding:11px 20px;border:1px solid #665238;background:rgba(63,73,62,.94);
+    color:#f4efdf;letter-spacing:.14em;text-transform:uppercase;font:10px Arial,sans-serif;
+    box-shadow:0 8px 20px rgba(42,49,39,.18)
+  }
+  .intro-cover.playing .cover-hint{opacity:0;pointer-events:none}
+  .intro-names{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    z-index:4;opacity:0;text-align:center;pointer-events:none;
+    transition:opacity .7s ease
+  }
+  .intro-cover.names-visible .intro-names{opacity:1}
+  .intro-name{
+    font-family:"Brush Script MT","Segoe Script",cursive;
+    color:#344034;font-size:clamp(58px,16vw,88px);line-height:.78;
+    text-shadow:0 2px 9px rgba(255,255,255,.58)
+  }
+  .intro-and{
+    font-family:Georgia,serif;color:#8a7452;font-size:30px;
+    margin:14px 0 12px
+  }
+  .intro-arrow{opacity:0;pointer-events:none;transition:opacity .3s ease}
+  .intro-page.finished .intro-arrow{opacity:1;pointer-events:auto}
+  .intro-page.finished .intro-cover{cursor:default}
+
+  /* Mobile-first opening cover and scroll lock */
+  html, body { width:100%; min-height:100%; overscroll-behavior:none; }
+  body { overflow:hidden; }
+  .app { width:100%; height:100dvh; height:100svh; }
+  .app.scroll-locked { overflow:hidden !important; touch-action:pan-x; }
+  .intro-page {
+    padding:0 !important; margin:0; width:100%;
+    height:100vh; height:100dvh; height:100svh;
+    min-height:100vh; min-height:100dvh; min-height:100svh;
+    flex:0 0 100%;
+  }
+  .intro-cover {
+    display:block; position:absolute; inset:0; width:100%; height:100%;
+    margin:0; padding:0; border:0; -webkit-tap-highlight-color:transparent;
+  }
+  .intro-poster {
+    position:absolute; inset:0; display:block; width:100%; height:100%;
+    object-fit:cover; object-position:center; background:var(--sage); z-index:1;
+  }
+  @media (max-width:600px) {
+    .page { padding:32px 18px 60px; min-height:100svh; }
+    .page::before { inset:12px; }
+    .page::after { inset:19px; }
+    .intro-cover::before { inset:12px; }
+    .intro-cover::after { inset:19px; }
+    .hero-card { padding:26px 18px; }
+    h2 { font-size:18px; }
+    .venue { font-size:clamp(20px, 6vw, 25px); }
+    .countdown { gap:6px; }
+    .unit { min-width:0; flex:1; padding:10px 3px; }
+    .unit b { font-size:clamp(19px, 6vw, 25px); }
+    .unit small { font-size:8px; }
+    .script { font-size:clamp(48px, 14vw, 72px); }
+    .intro-name { font-size:clamp(48px, 14vw, 76px); }
+  }
+  @media (max-height:620px) {
+    .page { padding-top:24px; padding-bottom:48px; }
+    .hero-card { padding:20px 16px; }
+    .divider { margin:16px auto; }
+  }
+
+
+  /* Haldi ceremony page — warm marigold accents, matching the invitation palette */
+  .haldi-page {
+    background:
+      radial-gradient(ellipse at 50% 45%, rgba(255,249,220,.88), rgba(244,235,204,.72) 58%, rgba(213,199,157,.42)),
+      linear-gradient(135deg,#a5ad94,#c0c3a4 48%,#9ea88f);
+  }
+  .haldi-page::before { border-color:rgba(119,91,38,.42); }
+  .haldi-page::after { border-color:rgba(255,250,224,.82); }
+  .haldi-card {
+    position:relative;
+    padding:clamp(24px,6vw,38px) clamp(18px,5vw,30px);
+    border:1px solid rgba(147,111,43,.34);
+    background:rgba(255,252,232,.55);
+    box-shadow:0 18px 50px rgba(70,58,31,.13), inset 0 0 0 7px rgba(255,255,255,.18);
+    overflow:hidden;
+  }
+  .haldi-card::before,.haldi-card::after {
+    content:"✿  ❋  ✿";
+    position:absolute;
+    left:0;right:0;
+    color:rgba(185,130,27,.55);
+    font-size:18px;
+    letter-spacing:.7em;
+    pointer-events:none;
+  }
+  .haldi-card::before { top:9px; }
+  .haldi-card::after { bottom:9px; transform:rotate(180deg); }
+  .haldi-garland {
+    display:flex;justify-content:center;align-items:center;gap:7px;
+    margin:8px auto 22px;color:#b88928;
+  }
+  .haldi-garland span {
+    display:block;width:9px;height:12px;border-radius:70% 30% 65% 35%;
+    background:linear-gradient(145deg,#f7d66c,#c58a1c);
+    transform:rotate(35deg);
+    box-shadow:0 1px 2px rgba(101,74,24,.16);
+  }
+  .haldi-garland span:nth-child(even) { transform:rotate(-35deg) translateY(4px); }
+  .haldi-symbol {
+    display:grid;place-items:center;width:62px;height:62px;margin:0 auto 16px;
+    border:1px solid rgba(172,126,33,.55);border-radius:50%;
+    color:#a7771e;font-size:29px;
+    box-shadow:inset 0 0 0 5px rgba(226,190,92,.18);
+  }
+  .haldi-kicker {
+    color:#967022;font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  }
+  .haldi-title {
+    margin:13px 0 8px;font-family:"Brush Script MT","Segoe Script",cursive;
+    font-size:clamp(42px,11vw,64px);line-height:1.05;font-weight:400;
+    color:#566044;text-transform:none;letter-spacing:0;
+  }
+  .haldi-date {
+    margin-top:22px;font-size:clamp(19px,5vw,24px);font-weight:700;
+    letter-spacing:.025em;color:#334b50;
+  }
+  .haldi-time { margin-top:18px;font-size:17px;color:#64746c; }
+  .haldi-rule {
+    display:flex;align-items:center;gap:12px;max-width:260px;margin:22px auto;
+    color:#b88928;
+  }
+  .haldi-rule::before,.haldi-rule::after {
+    content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#b88928,transparent);
+  }
+  .haldi-rule span {font-size:19px;line-height:1}
+  .haldi-venue-label {
+    margin-top:4px;color:#334b50;font-weight:700;letter-spacing:.06em;
+  }
+  .haldi-venue {
+    margin:9px 0 0;font-size:clamp(17px,4.5vw,21px);font-style:italic;color:#596b63;
+  }
+  .haldi-flower-corner {
+    position:absolute;z-index:1;color:rgba(194,143,37,.55);font-size:clamp(32px,8vw,54px);
+    pointer-events:none;line-height:1;
+  }
+  .haldi-flower-corner.top-left {top:34px;left:26px;transform:rotate(-25deg)}
+  .haldi-flower-corner.top-right {top:34px;right:26px;transform:rotate(25deg)}
+  .haldi-flower-corner.bottom-left {bottom:35px;left:25px;transform:rotate(25deg)}
+  .haldi-flower-corner.bottom-right {bottom:35px;right:25px;transform:rotate(-25deg)}
+  @media(max-width:600px) {
+    .haldi-page {padding:26px 18px 50px}
+    .haldi-card {padding:30px 18px}
+    .haldi-flower-corner.top-left,.haldi-flower-corner.top-right {top:23px}
+    .haldi-flower-corner.bottom-left,.haldi-flower-corner.bottom-right {bottom:24px}
+  }
+
+
+  /* Nikah ceremony page — romantic blush, rose-gold and emerald; same layout language as the Haldi page */
+  .nikah-page {
+    isolation:isolate;
+    background:
+      radial-gradient(ellipse at 50% 42%, rgba(255,251,246,.96), rgba(255,236,236,.75) 55%, rgba(244,205,210,.5)),
+      radial-gradient(circle at 10% 8%, rgba(240,164,178,.55), transparent 34%),
+      radial-gradient(circle at 92% 92%, rgba(168,214,190,.55), transparent 36%),
+      linear-gradient(140deg,#f8dbe0,#fff1ea 48%,#dcefe3);
+  }
+  .nikah-page::before { border-color:rgba(176,92,112,.45); }
+  .nikah-page::after { border-color:rgba(255,255,255,.9); }
+  .nikah-card {
+    position:relative;
+    padding:clamp(28px,6vw,42px) clamp(18px,5vw,30px);
+    border:1px solid rgba(190,110,126,.38);
+    border-radius:46% 46% 18px 18px / 9% 9% 18px 18px;
+    background:linear-gradient(180deg,rgba(255,253,249,.82),rgba(255,244,242,.6));
+    box-shadow:0 20px 55px rgba(176,92,112,.16), inset 0 0 0 7px rgba(255,255,255,.35);
+    overflow:hidden;
+  }
+  .nikah-card::before,.nikah-card::after {
+    content:"♥  ❀  ♥";
+    position:absolute;left:0;right:0;
+    color:rgba(201,102,126,.6);font-size:16px;letter-spacing:.7em;pointer-events:none;
+  }
+  .nikah-card::before { top:12px; }
+  .nikah-card::after { bottom:10px; }
+  .nikah-garland {
+    display:flex;justify-content:center;align-items:center;gap:7px;margin:16px auto 20px;
+  }
+  .nikah-garland span {
+    display:block;width:10px;height:13px;border-radius:70% 30% 65% 35%;
+    background:linear-gradient(145deg,#f6a9b8,#cf6079);
+    transform:rotate(35deg);box-shadow:0 1px 2px rgba(120,40,60,.18);
+    animation:nikahSway 2.6s ease-in-out infinite;
+  }
+  .nikah-garland span:nth-child(even) {
+    background:linear-gradient(145deg,#8fd1aa,#2f8a62);
+    transform:rotate(-35deg) translateY(4px);animation-delay:-1.3s;
+  }
+  .nikah-symbol {
+    display:grid;place-items:center;width:66px;height:66px;margin:0 auto 16px;
+    border:1px solid rgba(186,112,70,.55);border-radius:50%;
+    color:#c0627b;font-size:30px;
+    box-shadow:inset 0 0 0 5px rgba(236,168,182,.25), 0 0 22px rgba(240,170,185,.45);
+    animation:nikahBeat 2.2s ease-in-out infinite;
+  }
+  .nikah-kicker {
+    color:#2f7f5e;font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+  }
+  .nikah-title {
+    margin:13px 0 8px;font-family:"Brush Script MT","Segoe Script",cursive;
+    font-size:clamp(46px,12vw,70px);line-height:1.05;font-weight:400;
+    color:#2e6b52;text-transform:none;letter-spacing:0;
+    text-shadow:0 2px 0 rgba(255,255,255,.85),0 4px 14px rgba(240,170,185,.45);
+  }
+  .nikah-date {
+    margin-top:22px;font-size:clamp(19px,5vw,24px);font-weight:700;
+    letter-spacing:.025em;color:#8f3b52;
+  }
+  .nikah-time { margin-top:18px;font-size:17px;color:#6b5a58; }
+  .nikah-rule {
+    display:flex;align-items:center;gap:12px;max-width:260px;margin:22px auto;color:#c9667e;
+  }
+  .nikah-rule::before,.nikah-rule::after {
+    content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#c9a064,transparent);
+  }
+  .nikah-rule span {font-size:19px;line-height:1}
+  .nikah-venue {
+    font-size:clamp(21px,6vw,26px);color:#2e6b52;margin:10px 0;
+  }
+  .nikah-place { color:#7b6a67; }
+  .nikah-btn {
+    background:linear-gradient(135deg,#2f8a62,#1f6a49);border-color:#b8895a;color:#fff7ea;
+    box-shadow:0 8px 20px rgba(47,138,98,.28);
+  }
+  .nikah-flower-corner {
+    position:absolute;z-index:1;color:rgba(209,106,130,.6);font-size:clamp(32px,8vw,54px);
+    pointer-events:none;line-height:1;animation:nikahSway 4s ease-in-out infinite;
+  }
+  .nikah-flower-corner.top-left {top:34px;left:26px;transform:rotate(-25deg)}
+  .nikah-flower-corner.top-right {top:34px;right:26px;transform:rotate(25deg);animation-delay:-1s}
+  .nikah-flower-corner.bottom-left {bottom:35px;left:25px;transform:rotate(25deg);animation-delay:-2s}
+  .nikah-flower-corner.bottom-right {bottom:35px;right:25px;transform:rotate(-25deg);animation-delay:-3s}
+  .nikah-heart {
+    position:absolute;z-index:1;pointer-events:none;color:rgba(214,98,126,.7);
+    font-size:clamp(14px,3.6vw,22px);animation:nikahFloat 5s ease-in-out infinite;
+  }
+  .nikah-heart.h1 {left:12%;top:26%}
+  .nikah-heart.h2 {right:11%;top:34%;animation-delay:-1.7s;font-size:clamp(12px,3vw,18px)}
+  .nikah-heart.h3 {left:15%;bottom:24%;animation-delay:-3.1s}
+  .nikah-heart.h4 {right:15%;bottom:27%;animation-delay:-.9s;color:rgba(190,150,86,.8)}
+  @keyframes nikahBeat {0%,100%{transform:scale(1)}14%{transform:scale(1.1)}28%{transform:scale(1)}}
+  @keyframes nikahSway {0%,100%{translate:0 0}50%{translate:0 4px}}
+  @keyframes nikahFloat {0%,100%{transform:translateY(0) rotate(-8deg);opacity:.5}50%{transform:translateY(-13px) rotate(8deg);opacity:1}}
+  @media(max-width:600px) {
+    .nikah-page {padding:26px 18px 50px}
+    .nikah-card {padding:34px 18px;border-radius:40% 40% 14px 14px / 6% 6% 14px 14px}
+    .nikah-flower-corner.top-left,.nikah-flower-corner.top-right {top:23px}
+    .nikah-flower-corner.bottom-left,.nikah-flower-corner.bottom-right {bottom:24px}
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .nikah-garland span,.nikah-symbol,.nikah-flower-corner,.nikah-heart {animation:none!important}
+  }
+
+
+  /* Door intro — living background, then petals and birds as the doors open */
+  .door-live{position:absolute;inset:0;z-index:9;pointer-events:none;overflow:hidden;transition:opacity 1s ease}
+  .door-intro.doors-opening .door-live,.door-intro.doors-opening .door-petals{opacity:0}
+  .door-shine{
+    position:absolute;top:-10%;bottom:-10%;left:-60%;width:45%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,240,.0) 20%,rgba(255,255,235,.55) 50%,rgba(255,255,240,0) 80%,transparent);
+    transform:skewX(-18deg);animation:doorShine 4.6s ease-in-out infinite;
+  }
+  .door-seam{
+    position:absolute;top:0;bottom:0;left:50%;width:36px;margin-left:-18px;
+    background:linear-gradient(90deg,transparent,rgba(255,244,190,.85),transparent);
+    filter:blur(5px);animation:seamPulse 2.6s ease-in-out infinite;
+  }
+  .door-orb{position:absolute;border-radius:50%;filter:blur(40px);opacity:.55;mix-blend-mode:soft-light;animation:orbDrift 9s ease-in-out infinite alternate}
+  .door-orb.o1{width:55vmin;height:55vmin;left:-12vmin;top:6%;background:#ff9db4}
+  .door-orb.o2{width:60vmin;height:60vmin;right:-14vmin;top:38%;background:#7ee0b0;animation-delay:-3s}
+  .door-orb.o3{width:50vmin;height:50vmin;left:22%;bottom:-14vmin;background:#ffe08a;animation-delay:-6s}
+  .heaven-door{background-size:220% 100%;animation:doorHue 7s ease-in-out infinite alternate}
+  .door-intro.doors-opening .heaven-door{animation:none}
+  .door-petals{position:absolute;inset:0;z-index:10;pointer-events:none;overflow:hidden;transition:opacity 1s ease}
+  .dp{
+    position:absolute;top:-30px;width:12px;height:16px;border-radius:70% 30% 65% 35%;
+    transform:scale(var(--s));opacity:.9;animation:petalFall var(--d) linear var(--l) infinite;
+  }
+  .dp.pk{background:linear-gradient(145deg,#ffc2d0,#e8728f)}
+  .dp.rs{background:linear-gradient(145deg,#f7a6b9,#c9667e)}
+  .dp.gd{background:linear-gradient(145deg,#fbe39a,#d9a441)}
+  .dp.gr{background:linear-gradient(145deg,#a8e3c2,#2f9e72)}
+  .door-fx{position:fixed;inset:0;z-index:101;pointer-events:none;overflow:hidden;visibility:hidden}
+  .door-fx.go{visibility:visible}
+  .door-fx .door-petals{opacity:0;z-index:1}
+  .door-fx.go .door-petals{opacity:1;transition:opacity .8s ease .5s}
+  .door-fx.go .dp{animation-play-state:running}
+  .door-fx:not(.go) .dp{animation-play-state:paused}
+  .door-fx.end{opacity:0;transition:opacity 1.2s ease}
+  .bird{position:absolute;left:0;top:var(--y);width:calc(88px*var(--sc));opacity:0;animation:birdFly var(--t) ease-in-out var(--dl) both paused}
+  .door-fx.go .bird{animation-play-state:running}
+  .bird-svg{display:block;width:100%;height:auto;fill:var(--bc);filter:drop-shadow(0 3px 4px rgba(40,40,30,.25))}
+  .bird-svg .wing{transform-origin:30px 15px;animation:wingFlap .38s ease-in-out infinite alternate}
+  .bird:nth-child(even) .wing{animation-duration:.46s}
+  @keyframes doorShine{0%{left:-60%}55%,100%{left:130%}}
+  @keyframes seamPulse{0%,100%{opacity:.35}50%{opacity:1}}
+  @keyframes orbDrift{from{transform:translate(0,0) scale(1)}to{transform:translate(8vmin,-6vmin) scale(1.2)}}
+  @keyframes doorHue{from{background-position:0 0;filter:hue-rotate(-8deg) brightness(1)}to{background-position:100% 0;filter:hue-rotate(10deg) brightness(1.12)}}
+  @keyframes petalFall{
+    0%{transform:translate(0,-6vh) rotate(0) scale(var(--s))}
+    25%{transform:translate(calc(var(--x)*.6),28vh) rotate(160deg) scale(var(--s))}
+    50%{transform:translate(calc(var(--x)*-.5),56vh) rotate(320deg) scale(var(--s))}
+    75%{transform:translate(var(--x),84vh) rotate(500deg) scale(var(--s))}
+    100%{transform:translate(0,112vh) rotate(680deg) scale(var(--s))}
+  }
+  @keyframes birdFly{
+    0%{opacity:0;transform:translate(-14vw,6vh) rotate(8deg)}
+    8%{opacity:1}
+    30%{transform:translate(24vw,-4vh) rotate(-6deg)}
+    55%{transform:translate(56vw,-12vh) rotate(5deg)}
+    80%{opacity:1;transform:translate(92vw,-22vh) rotate(-4deg)}
+    100%{opacity:0;transform:translate(122vw,-30vh) rotate(0)}
+  }
+  @keyframes wingFlap{from{transform:scaleY(1)}to{transform:scaleY(-.55)}}
+  @media(prefers-reduced-motion:reduce){
+    .door-shine,.door-seam,.door-orb,.heaven-door,.dp,.bird,.bird-svg .wing{animation:none!important}
+    .door-fx{display:none}
+  }
+
+
+  /* Urdu calligraphy at the top of pages */
+  .page-dua,.page-bismillah{
+    position:absolute;z-index:4;left:0;right:0;text-align:center;pointer-events:none;direction:rtl;
+    font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Nafees Nastaleeq","Noto Naskh Arabic","Scheherazade New","Traditional Arabic",serif;
+    font-weight:700;
+    background:linear-gradient(100deg,#1f6a49 0%,#2f9e72 30%,#c9a064 52%,#2f9e72 74%,#1f6a49 100%);
+    background-size:220% 100%;-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:#2e6b52;
+    animation:duaShine 6s linear infinite;
+    filter:drop-shadow(0 1px 4px rgba(201,160,100,.4));
+  }
+  .page-dua{top:max(34px,4.5vh);font-size:clamp(20px,5.6vw,27px);line-height:1.9}
+  .page-bismillah{top:max(30px,4vh);font-size:20px;line-height:1.5;font-family:"Amiri","Noto Naskh Arabic","Scheherazade New","Geeza Pro","Traditional Arabic","Segoe UI Historic","Segoe UI Symbol",serif;font-weight:400}
+  .haldi-page,.nikah-page{padding-top:92px}
+  @media(max-width:600px){.haldi-page,.nikah-page{padding:86px 18px 40px}}
+  @media(max-height:700px){.haldi-page,.nikah-page{padding-top:82px;padding-bottom:28px}.nikah-flower-corner.bottom-left,.nikah-flower-corner.bottom-right,.haldi-flower-corner.bottom-left,.haldi-flower-corner.bottom-right{bottom:14px}}
+  .joyful-title-page .joyful-garland{top:calc(clamp(30px,7vh,70px) + 40px)}
+  @media(max-width:600px){.joyful-title-page .joyful-garland{top:calc(35px + 40px)}}
+  @media(prefers-reduced-motion:reduce){.page-dua,.page-bismillah{animation:none!important;-webkit-text-fill-color:#2e6b52;background:none}}
+
+
+  /* First page: kid-friendly scroll button */
+  .joyful-title-page .joyful-footer-note{bottom:calc(clamp(34px,7vh,64px) + 46px)}
+  @media(max-width:600px){.joyful-title-page .joyful-footer-note{bottom:76px}}
+  .kid-down{
+    position:absolute;z-index:5;left:50%;bottom:30px;margin-left:-22px;width:44px;height:44px;
+    border:2px solid #fff;border-radius:50%;padding:0;cursor:pointer;
+    background:linear-gradient(145deg,#f7a6b9,#e8728f 55%,#e9a23b);
+    box-shadow:0 6px 14px rgba(214,98,126,.4),inset 0 -3px 0 rgba(0,0,0,.08);
+    opacity:0;visibility:hidden;-webkit-tap-highlight-color:transparent;
+  }
+  .joyful-title-page.go .kid-down{visibility:visible;animation:kdIn .7s cubic-bezier(.3,1.6,.5,1) 1.6s forwards,kdBounce 1.5s ease-in-out 2.4s infinite}
+  .page:not(.joyful-title-page).visible .kid-down{visibility:visible;animation:kdIn .7s cubic-bezier(.3,1.6,.5,1) 1.2s forwards,kdBounce 1.5s ease-in-out 2s infinite}
+  .kd-ring{position:absolute;inset:-2px;border-radius:50%;border:2px solid rgba(232,114,143,.7);animation:kdRing 1.8s ease-out infinite}
+  .kd-chev{position:absolute;left:50%;top:11px;width:12px;height:12px;margin-left:-6px;border-right:3px solid #fff;border-bottom:3px solid #fff;border-radius:2px;transform:rotate(45deg);animation:kdChev 1.5s ease-in-out infinite}
+  .kd-chev.c2{top:19px;animation-delay:.2s;opacity:.7}
+  .kid-down:focus-visible{outline:3px solid #c9a064;outline-offset:3px}
+  @keyframes kdIn{from{opacity:0;transform:translateY(24px) scale(.4)}to{opacity:1;transform:none}}
+  @keyframes kdBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+  @keyframes kdRing{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+  @keyframes kdChev{0%,100%{opacity:.5}50%{opacity:1}}
+  @media(prefers-reduced-motion:reduce){.kd-ring,.kd-chev{animation:none!important}.joyful-title-page.go .kid-down,.page.visible .kid-down{animation:none;opacity:1}}
+
+  /* Door intro: "touch here" hint */
+  .tap-hint{position:absolute;left:50%;top:56%;width:0;height:0}
+  .tap-ring{position:absolute;left:-34px;top:-34px;width:68px;height:68px;border-radius:50%;border:3px solid rgba(255,252,235,.95);box-shadow:0 0 14px rgba(255,236,170,.9);opacity:0;animation:tapRing 2.4s ease-out infinite}
+  .tap-ring.r2{animation-delay:.8s}.tap-ring.r3{animation-delay:1.6s}
+  .tap-hand{position:absolute;left:-14px;top:-6px;fill:#fffaf0;stroke:#b8895a;stroke-width:1.6;filter:drop-shadow(0 4px 8px rgba(70,45,10,.5));animation:tapHand 2.4s ease-in-out infinite;transform-origin:50% 20%}
+  .tap-label{position:absolute;left:50%;top:64px;transform:translateX(-50%);white-space:nowrap;font:600 11px Arial,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#fffaf0;text-shadow:0 2px 10px #47351b,0 0 14px rgba(255,236,170,.9);animation:heaven-glow 2s ease-in-out infinite alternate}
+  .heaven-door.left{animation:doorHue 7s ease-in-out infinite alternate,doorPeekL 2.4s ease-in-out infinite}
+  .heaven-door.right{animation:doorHue 7s ease-in-out infinite alternate,doorPeekR 2.4s ease-in-out infinite}
+  @keyframes tapRing{0%{transform:scale(.3);opacity:0}15%{opacity:1}100%{transform:scale(2.2);opacity:0}}
+  @keyframes tapHand{0%,100%{transform:translateY(8px) scale(1)}35%{transform:translateY(-6px) scale(1.05)}55%{transform:translateY(6px) scale(.92)}}
+  @keyframes doorPeekL{0%,100%{transform:rotateY(0)}50%{transform:rotateY(-3deg)}}
+  @keyframes doorPeekR{0%,100%{transform:rotateY(0)}50%{transform:rotateY(3deg)}}
+  .door-intro.doors-opening .heaven-door.left,.door-intro.doors-opening .heaven-door.right{animation:none}
+  @media(prefers-reduced-motion:reduce){.tap-ring,.tap-hand,.tap-label,.heaven-door.left,.heaven-door.right{animation:none!important}.tap-ring{opacity:.6}}
+
+  /* Final page — playful, elegant compliments page */
+  .compliments-page {
+    isolation:isolate;
+    background:
+      radial-gradient(circle at 12% 10%, rgba(255,214,222,.9), transparent 34%),
+      radial-gradient(circle at 90% 18%, rgba(255,238,184,.85), transparent 32%),
+      radial-gradient(circle at 80% 92%, rgba(176,226,205,.9), transparent 38%),
+      linear-gradient(160deg,#fff5ec,#f6efe0 45%,#e3f3e8);
+  }
+  .compliments-page::before { border-color:rgba(47,138,98,.4); }
+  .compliments-page::after { border-color:rgba(255,255,255,.95); }
+  .compliments-content { position:relative;z-index:3;width:min(100%,520px); }
+  .dua-wrap { position:relative;margin:0 auto 6px;padding:6px 0 0; }
+  .dua-glow {
+    position:absolute;left:50%;top:50%;width:min(86%,360px);height:120px;transform:translate(-50%,-50%);
+    background:radial-gradient(ellipse,rgba(255,226,140,.8),rgba(255,226,140,0) 70%);
+    filter:blur(6px);animation:duaGlow 3.4s ease-in-out infinite;
+  }
+  .dua {
+    position:relative;direction:rtl;
+    font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Nafees Nastaleeq","Noto Naskh Arabic","Scheherazade New","Traditional Arabic",serif;
+    font-size:clamp(34px,10vw,52px);line-height:2.1;font-weight:700;
+    background:linear-gradient(100deg,#1f6a49 0%,#2f9e72 30%,#c9a064 52%,#2f9e72 74%,#1f6a49 100%);
+    background-size:220% 100%;-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:#2e6b52;
+    animation:duaShine 5s linear infinite;
+    filter:drop-shadow(0 2px 6px rgba(201,160,100,.45));
+  }
+  .kid-rule {
+    display:flex;align-items:center;justify-content:center;gap:12px;color:#d6627e;margin:4px auto 14px;
+  }
+  .kid-rule span { color:#c9a064;animation:kidTwinkle 2s ease-in-out infinite alternate; }
+  .kid-rule span:last-child { animation-delay:-1s; }
+  .kid-rule i { font-style:normal;animation:nikahBeat 1.8s ease-in-out infinite; }
+  .compliments-title {
+    margin:0 0 20px;font-family:"Brush Script MT","Segoe Script",cursive;
+    font-size:clamp(30px,8.4vw,48px);line-height:1.15;font-weight:400;
+    letter-spacing:0;text-transform:none;color:#8f3b52;
+    text-shadow:0 2px 0 rgba(255,255,255,.9),0 4px 14px rgba(240,170,185,.5);
+  }
+  .kid-chips { display:flex;flex-wrap:wrap;justify-content:center;gap:10px 9px;margin:0 auto; }
+  .kid-chip {
+    --c:#e8728f;
+    appearance:none;cursor:pointer;border:2px solid #fff;color:#fff;
+    padding:7px 15px 8px;border-radius:999px;
+    font-family:"Fredoka","Trebuchet MS","Segoe UI",Arial,sans-serif;font-weight:500;
+    font-size:clamp(14px,4vw,17px);letter-spacing:.02em;
+    background:linear-gradient(145deg,color-mix(in srgb,var(--c) 78%,#fff),var(--c));
+    box-shadow:0 5px 12px color-mix(in srgb,var(--c) 40%,transparent),inset 0 -3px 0 rgba(0,0,0,.08);
+    opacity:0;transform:scale(.2) translateY(30px);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .page.visible .kid-chip {
+    animation:
+      chipPop .7s cubic-bezier(.3,1.6,.5,1) calc(.55s + var(--i)*.09s) forwards,
+      chipBob 3.2s ease-in-out calc(1.8s + var(--i)*.17s) infinite;
+  }
+  .kid-chip:nth-child(even) { rotate:-2deg; }
+  .kid-chip:nth-child(odd) { rotate:2deg; }
+  .kid-chip:active { scale:.9; }
+  .kid-chip:focus-visible { outline:3px solid #c9a064;outline-offset:2px; }
+  .compliments-all {
+    margin:20px auto 0;font-family:"Brush Script MT","Segoe Script",cursive;
+    font-size:clamp(23px,6.4vw,31px);line-height:1.3;color:#2e6b52;
+  }
+  .kid-hint { margin-top:12px;font:11px/1.4 "Fredoka",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#a07f6b; }
+  /* floating balloons and stars */
+  .kid-sky { position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden; }
+  .balloon {
+    position:absolute;bottom:-90px;width:34px;height:42px;border-radius:50% 50% 48% 48% / 56% 56% 44% 44%;
+    background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.85) 0 9%,transparent 10%),var(--bc);
+    opacity:.8;animation:balloonUp var(--bd) linear var(--bl) infinite;
+  }
+  .balloon::after {
+    content:"";position:absolute;left:50%;top:100%;width:1px;height:46px;background:rgba(120,100,90,.45);
+  }
+  .balloon::before {
+    content:"";position:absolute;left:50%;bottom:-4px;margin-left:-4px;border:4px solid transparent;border-bottom-color:var(--bc);
+  }
+  .b1{left:6%;--bc:#f28aa3;--bd:13s;--bl:0s}
+  .b2{left:20%;--bc:#7fcfa6;--bd:16s;--bl:-5s;width:28px;height:35px}
+  .b3{left:36%;--bc:#f6c768;--bd:14s;--bl:-9s}
+  .b4{left:55%;--bc:#9fb2f0;--bd:17s;--bl:-3s;width:30px;height:38px}
+  .b5{left:70%;--bc:#e79ad0;--bd:12.5s;--bl:-7s}
+  .b6{left:84%;--bc:#82d3e3;--bd:15s;--bl:-11s;width:26px;height:33px}
+  .b7{left:93%;--bc:#f3a47a;--bd:18s;--bl:-2s;width:30px;height:38px}
+  .kid-star { position:absolute;font-style:normal;color:#d9a441;animation:kidTwinkle 2.4s ease-in-out infinite alternate; }
+  .k1{left:9%;top:12%;font-size:20px}.k2{right:10%;top:9%;font-size:16px;animation-delay:-.8s;color:#e58aa2}
+  .k3{left:15%;top:46%;font-size:18px;animation-delay:-1.4s;color:#5db58f}.k4{right:8%;top:40%;font-size:22px;animation-delay:-.4s}
+  .k5{left:7%;bottom:18%;font-size:15px;animation-delay:-1.9s;color:#e58aa2}.k6{right:13%;bottom:14%;font-size:19px;animation-delay:-1.1s;color:#5db58f}
+  .k7{left:46%;top:5%;font-size:14px;animation-delay:-.2s}.k8{left:50%;bottom:6%;font-size:15px;animation-delay:-1.6s;color:#e58aa2}
+  /* tap confetti */
+  .confetti-bit { position:absolute;z-index:6;pointer-events:none;width:9px;height:14px;border-radius:2px;animation:confettiFly 1.3s cubic-bezier(.15,.7,.3,1) forwards; }
+  @keyframes chipPop { 0%{opacity:0;transform:scale(.2) translateY(30px)} 100%{opacity:1;transform:none} }
+  @keyframes chipBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+  @keyframes balloonUp { 0%{transform:translateY(0) translateX(0)} 25%{transform:translateY(-27vh) translateX(10px)} 50%{transform:translateY(-55vh) translateX(-8px)} 75%{transform:translateY(-82vh) translateX(10px)} 100%{transform:translateY(-120vh) translateX(0)} }
+  @keyframes kidTwinkle { from{opacity:.3;transform:scale(.7) rotate(0)} to{opacity:1;transform:scale(1.2) rotate(20deg)} }
+  @keyframes duaShine { from{background-position:0 0} to{background-position:-220% 0} }
+  @keyframes duaGlow { 0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(.95)} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)} }
+  @keyframes confettiFly { 0%{opacity:1;transform:translate(0,0) rotate(0)} 100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot))} }
+  @media(max-width:600px){ .compliments-page{padding:30px 16px 44px} }
+  @media(prefers-reduced-motion:reduce){
+    .dua,.dua-glow,.balloon,.kid-star,.kid-rule span,.kid-rule i,.page.visible .kid-chip{animation:none!important}
+    .page.visible .kid-chip{opacity:1;transform:none}
+    .dua{-webkit-text-fill-color:#2e6b52;background:none}
+  }
+
+
+  /* Joyful, romantic styling for the family invitation page; keeps the sage-and-cream palette */
+  .wedding-intro-page {
+    background:
+      radial-gradient(ellipse at 50% 35%, rgba(255,250,239,.94), transparent 56%),
+      radial-gradient(ellipse at 8% 12%, rgba(235,190,181,.34), transparent 42%),
+      radial-gradient(ellipse at 92% 88%, rgba(239,207,151,.32), transparent 42%),
+      linear-gradient(145deg,#c2bca6 0%,#eee4d4 48%,#b8c0a8 100%);
+  }
+  .wedding-intro-page::before { border-color:rgba(150,104,77,.42); }
+  .wedding-intro-page::after { border-color:rgba(255,250,236,.86); }
+  .wedding-intro-content {
+    padding:clamp(20px,5vw,34px) clamp(8px,2vw,16px);
+    border-radius:46% 46% 12px 12px / 9% 9% 12px 12px;
+    background:linear-gradient(180deg,rgba(255,250,240,.42),rgba(255,248,236,.12));
+  }
+  .love-kicker {
+    display:flex;justify-content:center;align-items:center;gap:10px;
+    margin:0 auto 22px;color:#a66f67;font-size:10px;letter-spacing:.2em;
+    text-transform:uppercase;
+  }
+  .love-kicker span {font-size:12px;color:#b98278;}
+  .love-sparkle {margin:17px 0 3px;color:#a97958;font-size:27px;line-height:1;}
+  .wedding-intro-page .names {color:#455343;}
+  .wedding-intro-page .names .n {text-shadow:0 2px 0 rgba(255,250,238,.45);}
+  .wedding-intro-page .names .and {color:#b77972;font-size:31px;}
+  .wedding-intro-page .groom-parentage {color:#806b53;}
+  .love-divider {display:flex;align-items:center;gap:12px;width:min(220px,70%);margin:22px auto 14px;color:#b77972;}
+  .love-divider span {height:1px;flex:1;background:linear-gradient(90deg,transparent,#b77972,transparent);}
+  .love-divider i {font-size:14px;font-style:normal;}
+  .love-blessing {max-width:340px;margin:0 auto;color:#756653;font-family:"Brush Script MT","Segoe Script",cursive;font-size:clamp(19px,5vw,24px);line-height:1.35;}
+  .love-corner {position:absolute;z-index:1;pointer-events:none;color:rgba(178,121,112,.58);line-height:1;}
+  .love-top-left {top:42px;left:34px;font-size:clamp(30px,8vw,48px);transform:rotate(-18deg);}
+  .love-top-right {top:42px;right:34px;font-size:clamp(30px,8vw,48px);transform:rotate(18deg);}
+  .love-bottom-left {bottom:43px;left:32px;font-size:clamp(24px,6vw,38px);color:rgba(177,139,69,.62);}
+  .love-bottom-right {bottom:43px;right:32px;font-size:clamp(24px,6vw,38px);color:rgba(177,139,69,.62);}
+  @media(max-width:600px) {
+    .wedding-intro-page {padding:34px 20px 54px;}
+    .wedding-intro-content {padding:24px 5px;}
+    .love-kicker {font-size:9px;letter-spacing:.14em;margin-bottom:17px;}
+    .love-top-left,.love-top-right {top:28px;}
+    .love-bottom-left,.love-bottom-right {bottom:30px;}
+    .love-blessing {max-width:290px;}
+  }
+
+
+  /* Dedicated celebratory title page shown only after the doors open */
+  .joyful-title-page {
+    isolation:isolate;
+    background:
+      radial-gradient(ellipse at 50% 42%,rgba(255,255,249,.98) 0%,rgba(255,248,235,.72) 43%,transparent 72%),
+      radial-gradient(circle at 8% 12%,rgba(239,174,164,.55),transparent 32%),
+      radial-gradient(circle at 92% 85%,rgba(240,198,119,.48),transparent 34%),
+      linear-gradient(145deg,#f5dcd0 0%,#fff2dc 48%,#e7e8d5 100%);
+    color:#604c42;
+  }
+  .joyful-title-page::before { inset:16px;border:1px solid rgba(166,111,103,.6); }
+  .joyful-title-page::after { inset:24px;border:1px solid rgba(255,255,255,.9); }
+  .joyful-title-card {
+    position:relative;z-index:2;width:min(100%,560px);padding:clamp(28px,7vh,58px) clamp(14px,5vw,34px);
+    text-align:center;border:1px solid rgba(183,137,99,.4);border-radius:48% 48% 18px 18px / 12% 12% 18px 18px;
+    background:linear-gradient(180deg,rgba(255,252,244,.72),rgba(255,247,231,.42));
+    box-shadow:0 18px 50px rgba(125,85,66,.10);animation:joyfulCardIn 1s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .joyful-kicker {font-size:clamp(10px,2.8vw,13px);letter-spacing:.2em;text-transform:uppercase;color:#a46e68;animation:joyfulFadeUp .8s .15s both;}
+  .joyful-ornament {display:flex;align-items:center;justify-content:center;gap:10px;margin:22px auto;color:#b88956;font-size:clamp(18px,4vw,25px);animation:joyfulFadeUp .8s .3s both;}
+  .joyful-ornament span {width:clamp(24px,8vw,62px);height:1px;background:linear-gradient(90deg,transparent,#b88956,transparent);}
+  .joyful-ornament i {font-style:normal;color:#c27d80;animation:joyfulHeartbeat 2s ease-in-out infinite;}
+  .joyful-label {margin:0 0 12px;font-size:clamp(11px,3vw,15px);letter-spacing:.22em;text-transform:uppercase;color:#8e6d51;animation:joyfulFadeUp .8s .45s both;}
+  .joyful-couple {margin:0;font-family:"Brush Script MT","Segoe Script",cursive;font-size:clamp(48px,12vw,82px);font-weight:400;line-height:1.06;color:#465442;text-shadow:0 2px 0 rgba(255,255,255,.8);animation:joyfulFadeUp .9s .6s both;}
+  .joyful-couple span {display:inline-block;color:#bd7c80;font-size:.72em;animation:joyfulHeartbeat 2s ease-in-out infinite;}
+  .joyful-bottom-rule {margin:25px 0 12px;color:#b7835e;font-size:clamp(18px,4vw,25px);letter-spacing:.08em;animation:joyfulFadeUp .8s .75s both;}
+  .joyful-caption {margin:0 auto;color:#82695a;font-family:"Brush Script MT","Segoe Script",cursive;font-size:clamp(19px,5vw,27px);line-height:1.35;animation:joyfulFadeUp .8s .9s both;}
+  .joyful-flower-row {margin-top:26px;color:#c18b69;font-size:clamp(16px,4vw,23px);letter-spacing:.04em;animation:joyfulFadeUp .8s 1s both;}
+  .joyful-garland {position:absolute;top:clamp(30px,7vh,70px);left:0;right:0;text-align:center;color:rgba(180,126,96,.82);font-size:clamp(15px,4vw,24px);letter-spacing:.08em;animation:joyfulSway 4s ease-in-out infinite;}
+  .joyful-footer-note {position:absolute;bottom:clamp(34px,7vh,64px);left:12%;right:12%;text-align:center;color:#947465;font-size:clamp(9px,2.5vw,12px);letter-spacing:.12em;line-height:1.5;text-transform:uppercase;}
+  .joyful-sparkle {position:absolute;z-index:1;color:rgba(191,126,121,.78);pointer-events:none;animation:joyfulFloat 4s ease-in-out infinite;}
+  .sparkle-a {top:25%;left:13%;font-size:clamp(20px,5vw,32px);}
+  .sparkle-b {top:32%;right:13%;font-size:clamp(17px,4vw,28px);animation-delay:-1.3s;color:rgba(190,145,76,.8);}
+  .sparkle-c {bottom:24%;left:17%;font-size:clamp(14px,3vw,21px);animation-delay:-2s;}
+  .joyful-title-page:not(.go),.joyful-title-page:not(.go) *{animation-play-state:paused!important}
+  @keyframes joyfulCardIn {from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:none}}
+  @keyframes joyfulFadeUp {from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes joyfulHeartbeat {0%,100%{transform:scale(1)}15%{transform:scale(1.16)}30%{transform:scale(1)}}
+  @keyframes joyfulFloat {0%,100%{transform:translateY(0) rotate(-8deg);opacity:.55}50%{transform:translateY(-12px) rotate(8deg);opacity:1}}
+  @keyframes joyfulSway {0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+  @media(max-width:600px) {
+    .joyful-title-page {padding:30px 20px 70px;}
+    .joyful-title-page::before {inset:12px}.joyful-title-page::after {inset:19px}
+    .joyful-title-card {padding:34px 12px;border-radius:42% 42% 14px 14px / 8% 8% 14px 14px;}
+    .joyful-garland {top:35px}.joyful-footer-note {bottom:32px;left:16%;right:16%;}
+    .sparkle-a {left:8%;top:24%}.sparkle-b {right:8%;top:29%}.sparkle-c {left:10%;bottom:23%;}
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .joyful-title-card,.joyful-kicker,.joyful-ornament,.joyful-label,.joyful-couple,.joyful-bottom-rule,.joyful-caption,.joyful-flower-row,.joyful-garland,.joyful-sparkle,.joyful-ornament i,.joyful-couple span {animation:none!important;}
+  }
+
+  /* Joyful wedding theme: hidden on the static poster, (unused) */
+  .opening-title-art {
+    position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:min(88%,520px);padding:clamp(18px,5vw,34px) 10px;text-align:center;
+    pointer-events:none;color:#344034;
+    opacity:0;visibility:hidden;
+    transition:opacity .5s ease, transform .6s ease, visibility .5s ease;
+  }
+  .intro-cover.playing .opening-title-art {
+    opacity:1;visibility:visible;
+    animation:openingTitleIn 1.1s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .opening-title-art::before {
+    content:"";position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(ellipse,rgba(250,246,226,.76) 0%,rgba(250,246,226,.48) 48%,transparent 76%);
+    z-index:-1;
+  }
+  .opening-title-kicker {
+    margin:0 0 18px;font-family:Georgia,"Times New Roman",serif;
+    font-size:clamp(11px,3vw,16px);font-weight:600;letter-spacing:.19em;
+    text-transform:uppercase;color:#876b4c;text-shadow:0 1px 8px rgba(255,250,231,.9);
+  }
+  .opening-title-flourish {
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    margin:0 auto 15px;color:#b77972;font-size:clamp(16px,4vw,22px);
+    animation:flourishGlow 2.8s ease-in-out infinite;
+  }
+  .opening-title-flourish::before,.opening-title-flourish::after {
+    content:"";width:clamp(34px,12vw,76px);height:1px;
+    background:linear-gradient(90deg,transparent,#b58b5a,transparent);
+  }
+  .opening-couple-names {
+    font-family:"Brush Script MT","Segoe Script",cursive;
+    font-size:clamp(36px,9.5vw,66px);line-height:1.02;color:#344034;
+    text-shadow:0 2px 0 rgba(255,250,236,.8),0 4px 14px rgba(255,250,236,.7);
+    white-space:normal;overflow-wrap:anywhere;
+  }
+  .opening-couple-names span {display:inline-block;color:#b77972;font-size:.7em;margin:0 .12em;animation:heartBeat 1.8s ease-in-out infinite;}
+  .opening-title-caption {
+    margin:18px 0 0;font-size:clamp(10px,2.7vw,13px);letter-spacing:.17em;
+    text-transform:uppercase;color:#756653;text-shadow:0 1px 8px rgba(255,250,231,.95);
+  }
+  .opening-floating-heart {
+    position:absolute;z-index:3;pointer-events:none;color:rgba(183,121,114,.76);
+    font-size:clamp(15px,4vw,24px);opacity:0;visibility:hidden;
+  }
+  .intro-cover.playing .opening-floating-heart {
+    opacity:1;visibility:visible;animation:heartFloat 4.8s ease-in-out infinite;
+  }
+  .opening-floating-heart.heart-one {left:14%;top:30%;animation-delay:-.8s;}
+  .opening-floating-heart.heart-two {right:14%;top:35%;font-size:clamp(12px,3vw,19px);animation-delay:-2.1s;}
+  .opening-floating-heart.heart-three {left:20%;bottom:27%;font-size:clamp(12px,3vw,18px);animation-delay:-3.2s;}
+  .opening-floating-heart.heart-four {right:20%;bottom:25%;animation-delay:-1.4s;}
+  @keyframes openingTitleIn {from{opacity:0;transform:translate(-50%,-44%) scale(.96)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+  @keyframes heartFloat {0%,100%{transform:translateY(0) rotate(-8deg);opacity:.45}50%{transform:translateY(-13px) rotate(8deg);opacity:1}}
+  @keyframes heartBeat {0%,100%{transform:scale(1)}14%{transform:scale(1.16)}28%{transform:scale(1)}}
+  @keyframes flourishGlow {0%,100%{opacity:.72}50%{opacity:1}}
+  @media(max-width:600px) {
+    .opening-title-art {width:88%;padding:20px 5px;}
+    .opening-title-kicker {letter-spacing:.12em;margin-bottom:13px;}
+    .opening-title-caption {letter-spacing:.1em;margin-top:14px;}
+    .opening-floating-heart.heart-one {left:8%;top:27%;}
+    .opening-floating-heart.heart-two {right:8%;top:31%;}
+    .opening-floating-heart.heart-three {left:10%;bottom:22%;}
+    .opening-floating-heart.heart-four {right:10%;bottom:20%;}
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .opening-title-art,.opening-title-flourish,.opening-couple-names span,.opening-floating-heart {animation:none!important;}
+  }
+
+  .door-intro{position:fixed;inset:0;z-index:100;cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none}
+  .door-intro.done{display:none}
+  /* Door-opening intro: full page height, slow reveal on first tap */
+  .heaven-doors{
+    position:absolute;inset:0;z-index:8;display:flex;align-items:stretch;justify-content:center;
+    perspective:2200px;overflow:hidden;pointer-events:none;
+  }
+  .heaven-doors::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 45%,rgba(255,255,232,.98),rgba(255,221,143,.4) 45%,transparent 75%),radial-gradient(ellipse at 50% 50%,rgba(255,246,211,.95),rgba(255,226,150,.55) 45%,rgba(255,236,190,.2) 100%);
+    transition:transform 4s ease,opacity 2.4s ease .5s;
+  }
+  .heaven-door{
+    position:relative;flex:0 0 50%;width:50%;height:100%;
+    border:0;outline:1px solid rgba(118,77,35,.75);outline-offset:-14px;
+    background:linear-gradient(100deg,#6b4828 0%,#c39a55 12%,#f4dfa6 24%,#a87938 39%,#dfbd75 52%,#76502a 100%);
+    box-shadow:inset 0 0 40px rgba(255,241,188,.75),0 0 40px rgba(32,35,23,.45);
+    transform-style:preserve-3d;
+    transition:transform 4.2s cubic-bezier(.5,.05,.25,1),filter 3.2s ease;
+  }
+  .heaven-door.left{transform-origin:left center;border-right:2px solid #f4d99a}
+  .heaven-door.right{transform-origin:right center;border-left:2px solid #f4d99a}
+  .heaven-door::before{
+    content:"";position:absolute;inset:26px 22px 26px;border:2px solid rgba(255,235,174,.92);
+    box-shadow:inset 0 0 0 3px rgba(106,67,28,.45),inset 0 0 25px rgba(255,247,201,.28);
+    border-radius:48% 48% 0 0 / 14% 14% 0 0;
+  }
+  .heaven-door::after{
+    content:"❦";position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);
+    color:#fff0bc;font-size:clamp(48px,9vw,86px);text-shadow:0 2px 12px #80531d,0 0 20px rgba(255,255,218,.95);
+  }
+  .heaven-door .door-ornament{
+    position:absolute;left:50%;top:56%;transform:translateX(-50%);width:42%;height:20%;
+    border:1px solid rgba(255,235,174,.85);border-radius:50% 50% 8px 8px;
+    box-shadow:inset 0 0 12px rgba(255,243,193,.5);
+  }
+  .heaven-door .door-ornament::before{content:"✧  ✦  ✧";position:absolute;top:40%;left:0;right:0;text-align:center;color:#fff0bc;font-size:clamp(13px,2.8vw,23px)}
+  .heaven-door .door-knob{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff9d8,#d6a74d 60%,#71471d);box-shadow:0 0 10px #ffe9a6}
+  .heaven-door.left .door-knob{right:10%}.heaven-door.right .door-knob{left:10%}
+  .heaven-door-caption{
+    position:absolute;z-index:2;bottom:max(7vh,34px);left:0;right:0;
+    color:#fff5d5;text-align:center;font:10px Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase;
+    text-shadow:0 2px 12px #47351b;animation:heaven-glow 2s ease-in-out infinite alternate;
+    transition:opacity .5s ease;
+  }
+  .heaven-sparkles{position:absolute;inset:0;z-index:2;color:#fff5c9;text-shadow:0 0 12px #fff4b8;transition:opacity .8s ease}
+  .heaven-sparkles span{position:absolute;animation:heaven-twinkle 1.8s ease-in-out infinite alternate}
+  .heaven-sparkles span:nth-child(1){left:18%;top:22%;font-size:24px}.heaven-sparkles span:nth-child(2){right:17%;top:30%;font-size:19px;animation-delay:.5s}
+  .heaven-sparkles span:nth-child(3){left:23%;bottom:25%;font-size:17px;animation-delay:.9s}.heaven-sparkles span:nth-child(4){right:22%;bottom:20%;font-size:25px;animation-delay:.3s}
+  .door-intro.doors-opening .heaven-door.left{transform:rotateY(-105deg);filter:brightness(1.25)}
+  .door-intro.doors-opening .heaven-door.right{transform:rotateY(105deg);filter:brightness(1.25)}
+  .door-intro.doors-opening .heaven-door-caption{animation:none;opacity:0}.door-intro.doors-opening .heaven-sparkles{opacity:0}
+  .door-intro.doors-opening .heaven-doors::before{transform:scale(1.4);opacity:0}
+  @keyframes heaven-twinkle{from{opacity:.35;transform:scale(.7) rotate(0)}to{opacity:1;transform:scale(1.15) rotate(18deg)}}
+  @keyframes heaven-glow{from{opacity:.65;letter-spacing:.22em}to{opacity:1;letter-spacing:.3em}}
+  @media(max-width:600px){
+    .heaven-door{outline-offset:-10px}
+    .heaven-door::before{inset:20px 16px}
+    .heaven-door-caption{font-size:9px;letter-spacing:.18em}
+  }
+  @media(prefers-reduced-motion:reduce){.heaven-door{transition-duration:.6s}.heaven-doors::before{transition-duration:.3s}}
+
+</style>
+</head>
+<body>
+<main class="app scroll-locked" id="app">
+
+<section class="page joyful-title-page" id="joyfulTitlePage" aria-label="Wedding Invitation of Simra and Altamash">
+  <div class="page-bismillah" lang="ar" dir="rtl" role="img" aria-label="Bismillah ir-Rahman ir-Rahim">﷽</div>
+  <div class="joyful-garland" aria-hidden="true">✿　❀　♥　❀　✿</div>
+  <div class="joyful-sparkle sparkle-a" aria-hidden="true">✧</div>
+  <div class="joyful-sparkle sparkle-b" aria-hidden="true">✦</div>
+  <div class="joyful-sparkle sparkle-c" aria-hidden="true">♥</div>
+  <div class="joyful-title-card">
+    <div class="joyful-kicker">With love and happiness</div>
+    <div class="joyful-ornament" aria-hidden="true"><span></span> ❦ <i>♥</i> ❦ <span></span></div>
+    <p class="joyful-label">Wedding Invitation of</p>
+    <h1 class="joyful-couple">Simra <span>&amp;</span> Altamash</h1>
+    <div class="joyful-bottom-rule" aria-hidden="true">❀　❧　❀</div>
+    <p class="joyful-caption">A beautiful beginning · A lifetime of love</p>
+    <div class="joyful-flower-row" aria-hidden="true">✿　❀　✿　❀　✿</div>
+  </div>
+  <button type="button" class="kid-down" id="kidDown" aria-label="Scroll down to the next page"><span class="kd-ring"></span><span class="kd-chev"></span><span class="kd-chev c2"></span></button>
+  <div class="joyful-footer-note">Together with our families, we invite you to celebrate love</div>
+</section>
+
+<section class="page wedding-intro-page" aria-label="Wedding invitation">
+  <div class="page-dua" lang="ur" dir="rtl" aria-hidden="true">والْیَوْمِ الْقُدُّوس</div>
+  <div class="botanical"><i class="leaf"></i><i class="leaf"></i></div>
+  <div class="love-corner love-top-left" aria-hidden="true">❀</div>
+  <div class="love-corner love-top-right" aria-hidden="true">❀</div>
+  <div class="love-corner love-bottom-left" aria-hidden="true">✿</div>
+  <div class="love-corner love-bottom-right" aria-hidden="true">✿</div>
+  <div class="content wedding-intro-content">
+    <div class="love-kicker reveal d1"><span>♥</span> A celebration of love <span>♥</span></div>
+    <div class="reveal d1">
+      <p class="invitation-hosts">Mrs Zubaida Begum and Mr Ashfaq Ahmad cordially invite your gracious presence &amp; blessings on the auspicious occasion of the wedding ceremony of their beloved daughter</p>
+    </div>
+    <div class="love-sparkle reveal d2" aria-hidden="true">❦</div>
+    <div class="reveal d2" style="margin-top:12px">
+      <div class="names"><span class="n">Simra Naz</span><span class="and">&amp;</span><span class="n">Mohd Altamash</span><span class="groom-parentage">(Son of Mohd Arshad)</span></div>
+    </div>
+    <div class="love-divider reveal d3"><span></span><i>♥</i><span></span></div>
+    <p class="love-blessing reveal d3">Together with your love and blessings, they begin a beautiful new chapter.</p>
+  </div>
+  <button type="button" class="kid-down" aria-label="Scroll down to the next page"><span class="kd-ring"></span><span class="kd-chev"></span><span class="kd-chev c2"></span></button>
+</section>
+
+<section class="page haldi-page" aria-label="Haldi ceremony details">
+  <div class="page-dua" lang="ur" dir="rtl" aria-hidden="true">والْیَوْمِ الْقُدُّوس</div>
+  <div class="haldi-flower-corner top-left" aria-hidden="true">✿</div>
+  <div class="haldi-flower-corner top-right" aria-hidden="true">✿</div>
+  <div class="haldi-flower-corner bottom-left" aria-hidden="true">✿</div>
+  <div class="haldi-flower-corner bottom-right" aria-hidden="true">✿</div>
+  <div class="content haldi-card">
+    <div class="haldi-garland" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="haldi-symbol reveal d1" aria-hidden="true">✿</div>
+    <div class="haldi-kicker reveal d1">A joyful family celebration</div>
+    <h2 class="haldi-title reveal d2">Haldi Ceremony</h2>
+    <div class="haldi-rule reveal d2" aria-hidden="true"><span>❋</span></div>
+    <div class="haldi-date reveal d3">07 November 2026</div>
+    <div class="haldi-time reveal d3">6:00 PM Onwards</div>
+    <div class="haldi-rule reveal d3" aria-hidden="true"><span>✿</span></div>
+    <div class="haldi-venue-label reveal d4">Venue</div>
+    <p class="haldi-venue reveal d4">At our Residence, Rasulabad</p>
+    <div class="haldi-garland" aria-hidden="true" style="margin:22px auto 0"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+  <button type="button" class="kid-down" aria-label="Scroll down to the next page"><span class="kd-ring"></span><span class="kd-chev"></span><span class="kd-chev c2"></span></button>
+</section>
+
+<section class="page nikah-page" aria-label="Nikah ceremony details">
+  <div class="page-dua" lang="ur" dir="rtl" aria-hidden="true">والْیَوْمِ الْقُدُّوس</div>
+  <div class="nikah-flower-corner top-left" aria-hidden="true">❀</div>
+  <div class="nikah-flower-corner top-right" aria-hidden="true">❀</div>
+  <div class="nikah-flower-corner bottom-left" aria-hidden="true">❀</div>
+  <div class="nikah-flower-corner bottom-right" aria-hidden="true">❀</div>
+  <div class="nikah-heart h1" aria-hidden="true">♥</div>
+  <div class="nikah-heart h2" aria-hidden="true">✦</div>
+  <div class="nikah-heart h3" aria-hidden="true">♥</div>
+  <div class="nikah-heart h4" aria-hidden="true">✧</div>
+  <div class="content nikah-card">
+    <div class="nikah-garland" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="nikah-symbol reveal d1" aria-hidden="true">♥</div>
+    <div class="nikah-kicker reveal d1">WEDDING INVITATION</div>
+    <h2 class="nikah-title reveal d2">Nikah Ceremony</h2>
+    <div class="nikah-rule reveal d2" aria-hidden="true"><span>❦</span></div>
+    <div class="nikah-date reveal d3">09 November 2026</div>
+    <div class="nikah-time reveal d3">8:00 PM Onwards</div>
+    <div class="nikah-rule reveal d3" aria-hidden="true"><span>♥</span></div>
+    <div class="nikah-venue reveal d4">Awadh Marriage Lawn</div>
+    <p class="nikah-place reveal d4">Amhat, Sultanpur</p>
+    <button class="btn nikah-btn reveal d4" onclick="showToast('Map link can be connected here.')">View location</button>
+    <div class="nikah-garland" style="margin:22px auto 4px" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+  <button type="button" class="kid-down" aria-label="Scroll down to the next page"><span class="kd-ring"></span><span class="kd-chev"></span><span class="kd-chev c2"></span></button>
+</section>
+
+<!-- Countdown section (commented out)
+<section class="page">
+  <div class="content">
+    <div class="reveal d1"><div class="smallcaps">The auspicious occasion</div></div>
+    <div class="countdown reveal d2" id="countdown">
+      <div class="unit"><b id="days">- -</b><small>Days</small></div>
+      <div class="unit"><b id="hours">- -</b><small>Hours</small></div>
+      <div class="unit"><b id="mins">- -</b><small>Minutes</small></div>
+      <div class="unit"><b id="secs">- -</b><small>Seconds</small></div>
+    </div>
+    <p class="reveal d3">Your presence and blessings will make this occasion truly special.</p>
+  </div>
+</section>
+-->
+
+
+
+<section class="page compliments-page" id="complimentsPage" aria-label="With best compliments from">
+  <div class="kid-sky" aria-hidden="true"><i class="balloon b1" aria-hidden="true"></i><i class="balloon b2" aria-hidden="true"></i><i class="balloon b3" aria-hidden="true"></i><i class="balloon b4" aria-hidden="true"></i><i class="balloon b5" aria-hidden="true"></i><i class="balloon b6" aria-hidden="true"></i><i class="balloon b7" aria-hidden="true"></i><i class="kid-star k1" aria-hidden="true">✦</i><i class="kid-star k2" aria-hidden="true">✧</i><i class="kid-star k3" aria-hidden="true">★</i><i class="kid-star k4" aria-hidden="true">✦</i><i class="kid-star k5" aria-hidden="true">✧</i><i class="kid-star k6" aria-hidden="true">✦</i><i class="kid-star k7" aria-hidden="true">★</i><i class="kid-star k8" aria-hidden="true">✧</i></div>
+  <div class="content compliments-content">
+    <div class="dua-wrap reveal d1">
+      <div class="dua-glow" aria-hidden="true"></div>
+      <div class="dua" lang="ur" dir="rtl">والْیَوْمِ الْقُدُّوس</div>
+    </div>
+    <div class="kid-rule reveal d2" aria-hidden="true"><span>✦</span><i>♥</i><span>✦</span></div>
+    <h2 class="compliments-title reveal d2">With Best Compliments From:-</h2>
+    <div class="kid-chips reveal d3" id="kidChips"><button type="button" class="kid-chip" style="--i:0;--c:#e8728f">Zahra</button><button type="button" class="kid-chip" style="--i:1;--c:#2f9e72">Haniya</button><button type="button" class="kid-chip" style="--i:2;--c:#e9a23b">Areeba</button><button type="button" class="kid-chip" style="--i:3;--c:#7a8fe0">Anaviya</button><button type="button" class="kid-chip" style="--i:4;--c:#d86bb4">Umama</button><button type="button" class="kid-chip" style="--i:5;--c:#3aa7c4">Nida</button><button type="button" class="kid-chip" style="--i:6;--c:#e8728f">Shifa</button><button type="button" class="kid-chip" style="--i:7;--c:#2f9e72">Hamza</button><button type="button" class="kid-chip" style="--i:8;--c:#e9a23b">Zaif</button><button type="button" class="kid-chip" style="--i:9;--c:#7a8fe0">Farhan</button><button type="button" class="kid-chip" style="--i:10;--c:#d86bb4">Azlan</button><button type="button" class="kid-chip" style="--i:11;--c:#3aa7c4">Rehan</button><button type="button" class="kid-chip" style="--i:12;--c:#e8728f">Samar</button><button type="button" class="kid-chip" style="--i:13;--c:#2f9e72">Ayan</button><button type="button" class="kid-chip" style="--i:14;--c:#e9a23b">Rizal</button><button type="button" class="kid-chip" style="--i:15;--c:#7a8fe0">Kashan</button><button type="button" class="kid-chip" style="--i:16;--c:#d86bb4">Afzal</button></div>
+    <p class="compliments-all reveal d4">and all dear Friends and Family</p>
+    <div class="kid-hint reveal d4" aria-hidden="true">tap a name for a little magic ✨</div>
+  </div>
+</section>
+
+</main>
+<div class="door-intro" id="doorIntro" role="button" tabindex="0" aria-label="Tap to open the wedding invitation">
+    <div class="heaven-doors" id="heavenDoors" aria-hidden="true">
+      <div class="heaven-sparkles"><span>✧</span><span>✦</span><span>✧</span><span>✦</span></div>
+      <div class="heaven-door left"><span class="door-ornament"></span><span class="door-knob"></span></div>
+      <div class="heaven-door right"><span class="door-ornament"></span><span class="door-knob"></span></div>
+      <div class="heaven-door-caption">Tap to open</div>
+    </div>
+    <div class="door-live" aria-hidden="true"><i class="door-shine"></i><i class="door-seam"></i><i class="door-orb o1"></i><i class="door-orb o2"></i><i class="door-orb o3"></i><div class="tap-hint"><i class="tap-ring r1"></i><i class="tap-ring r2"></i><i class="tap-ring r3"></i><svg class="tap-hand" viewBox="0 0 40 48" width="46" height="55"><rect x="15" y="2" width="9" height="24" rx="4.5"/><path d="M8 27q0-4 4-4h20q4 0 4 4v8q0 10-10 12h-8q-10-2-10-12z"/></svg></div></div>
+    <div class="door-petals" aria-hidden="true"><i class="dp pk" style="left:33.1%;--s:0.80;--d:12.9s;--l:-1.1s;--x:8px"></i><i class="dp gd" style="left:11.0%;--s:1.08;--d:14.5s;--l:-3.2s;--x:-49px"></i><i class="dp gr" style="left:43.6%;--s:0.75;--d:9.5s;--l:-6.4s;--x:45px"></i><i class="dp rs" style="left:56.3%;--s:1.32;--d:12.8s;--l:-8.7s;--x:-53px"></i><i class="dp pk" style="left:57.4%;--s:0.96;--d:14.9s;--l:-0.7s;--x:49px"></i><i class="dp gd" style="left:14.8%;--s:0.97;--d:12.2s;--l:-8.6s;--x:11px"></i><i class="dp gr" style="left:80.3%;--s:0.82;--d:12.5s;--l:-9.6s;--x:-13px"></i><i class="dp rs" style="left:11.4%;--s:1.16;--d:12.4s;--l:-9.3s;--x:3px"></i><i class="dp pk" style="left:67.3%;--s:0.98;--d:10.9s;--l:-8.8s;--x:-2px"></i><i class="dp gd" style="left:36.7%;--s:0.86;--d:10.1s;--l:-11.7s;--x:-50px"></i><i class="dp gr" style="left:57.1%;--s:1.04;--d:14.3s;--l:-10.9s;--x:-24px"></i></div>
+
+</div>
+<div class="door-fx" id="doorFx" aria-hidden="true"><div class="door-petals burst" aria-hidden="true"><i class="dp pk" style="left:60.5%;--s:0.75;--d:6.3s;--l:-1.3s;--x:-17px"></i><i class="dp gd" style="left:16.6%;--s:1.02;--d:4.6s;--l:-5.3s;--x:37px"></i><i class="dp gr" style="left:55.6%;--s:1.21;--d:7.4s;--l:-2.7s;--x:-16px"></i><i class="dp rs" style="left:59.1%;--s:1.08;--d:6.1s;--l:-6.7s;--x:60px"></i><i class="dp pk" style="left:27.9%;--s:1.15;--d:4.7s;--l:-5.8s;--x:-21px"></i><i class="dp gd" style="left:64.1%;--s:1.35;--d:7.4s;--l:-2.3s;--x:-11px"></i><i class="dp gr" style="left:87.2%;--s:0.93;--d:7.8s;--l:-2.8s;--x:18px"></i><i class="dp rs" style="left:13.2%;--s:0.74;--d:7.2s;--l:-1.0s;--x:-29px"></i><i class="dp pk" style="left:40.2%;--s:1.30;--d:6.2s;--l:-1.3s;--x:-9px"></i><i class="dp gd" style="left:54.7%;--s:1.27;--d:7.4s;--l:-6.9s;--x:-25px"></i><i class="dp gr" style="left:69.8%;--s:1.34;--d:6.9s;--l:-3.0s;--x:-31px"></i><i class="dp rs" style="left:16.5%;--s:0.81;--d:5.3s;--l:-1.9s;--x:2px"></i><i class="dp pk" style="left:81.8%;--s:0.82;--d:5.5s;--l:-1.2s;--x:8px"></i><i class="dp gd" style="left:37.4%;--s:1.07;--d:7.8s;--l:-5.5s;--x:5px"></i><i class="dp gr" style="left:93.2%;--s:1.13;--d:7.1s;--l:-3.7s;--x:51px"></i><i class="dp rs" style="left:76.9%;--s:1.27;--d:7.3s;--l:-3.1s;--x:-9px"></i><i class="dp pk" style="left:39.8%;--s:1.01;--d:5.9s;--l:-1.5s;--x:-34px"></i><i class="dp gd" style="left:44.3%;--s:0.77;--d:6.6s;--l:-0.8s;--x:12px"></i><i class="dp gr" style="left:16.5%;--s:0.77;--d:5.8s;--l:-0.2s;--x:51px"></i><i class="dp rs" style="left:22.0%;--s:0.94;--d:6.7s;--l:-7.6s;--x:17px"></i><i class="dp pk" style="left:37.0%;--s:0.78;--d:7.5s;--l:-7.9s;--x:-1px"></i><i class="dp gd" style="left:48.1%;--s:0.90;--d:5.0s;--l:-6.0s;--x:34px"></i><i class="dp gr" style="left:27.4%;--s:1.24;--d:5.1s;--l:-0.2s;--x:7px"></i><i class="dp rs" style="left:36.7%;--s:1.15;--d:7.7s;--l:-6.1s;--x:-22px"></i><i class="dp pk" style="left:95.9%;--s:1.26;--d:6.9s;--l:-2.1s;--x:-14px"></i><i class="dp gd" style="left:89.2%;--s:0.93;--d:5.3s;--l:-4.3s;--x:4px"></i><i class="dp gr" style="left:33.6%;--s:0.84;--d:7.3s;--l:-7.9s;--x:49px"></i><i class="dp rs" style="left:20.7%;--s:0.86;--d:5.9s;--l:-6.4s;--x:-35px"></i><i class="dp pk" style="left:51.7%;--s:0.93;--d:4.6s;--l:-0.2s;--x:-25px"></i><i class="dp gd" style="left:47.3%;--s:0.83;--d:6.6s;--l:-2.8s;--x:43px"></i></div><div class="bird" style="--y:18vh;--t:5.2s;--dl:0.2s;--sc:1.0;--bc:#2f8a62"><svg viewBox="0 0 60 30" class="bird-svg"><g class="wing wl"><path d="M30 15C22 1 8 1 0 8c10 0 20 4 30 7z"/></g><g class="wing wr"><path d="M30 15C38 1 52 1 60 8c-10 0-20 4-30 7z"/></g><ellipse cx="30" cy="16" rx="4.5" ry="3"/><circle cx="34" cy="14.5" r="2"/><path d="M36 14.5l4 1-4 1z"/></svg></div><div class="bird" style="--y:28vh;--t:6.4s;--dl:0.9s;--sc:0.75;--bc:#c9667e"><svg viewBox="0 0 60 30" class="bird-svg"><g class="wing wl"><path d="M30 15C22 1 8 1 0 8c10 0 20 4 30 7z"/></g><g class="wing wr"><path d="M30 15C38 1 52 1 60 8c-10 0-20 4-30 7z"/></g><ellipse cx="30" cy="16" rx="4.5" ry="3"/><circle cx="34" cy="14.5" r="2"/><path d="M36 14.5l4 1-4 1z"/></svg></div><div class="bird" style="--y:10vh;--t:7.2s;--dl:1.6s;--sc:1.25;--bc:#b8895a"><svg viewBox="0 0 60 30" class="bird-svg"><g class="wing wl"><path d="M30 15C22 1 8 1 0 8c10 0 20 4 30 7z"/></g><g class="wing wr"><path d="M30 15C38 1 52 1 60 8c-10 0-20 4-30 7z"/></g><ellipse cx="30" cy="16" rx="4.5" ry="3"/><circle cx="34" cy="14.5" r="2"/><path d="M36 14.5l4 1-4 1z"/></svg></div><div class="bird" style="--y:36vh;--t:5.8s;--dl:2.3s;--sc:0.6;--bc:#3aa7c4"><svg viewBox="0 0 60 30" class="bird-svg"><g class="wing wl"><path d="M30 15C22 1 8 1 0 8c10 0 20 4 30 7z"/></g><g class="wing wr"><path d="M30 15C38 1 52 1 60 8c-10 0-20 4-30 7z"/></g><ellipse cx="30" cy="16" rx="4.5" ry="3"/><circle cx="34" cy="14.5" r="2"/><path d="M36 14.5l4 1-4 1z"/></svg></div><div class="bird" style="--y:22vh;--t:8.0s;--dl:3.0s;--sc:0.9;--bc:#8f3b52"><svg viewBox="0 0 60 30" class="bird-svg"><g class="wing wl"><path d="M30 15C22 1 8 1 0 8c10 0 20 4 30 7z"/></g><g class="wing wr"><path d="M30 15C38 1 52 1 60 8c-10 0-20 4-30 7z"/></g><ellipse cx="30" cy="16" rx="4.5" ry="3"/><circle cx="34" cy="14.5" r="2"/><path d="M36 14.5l4 1-4 1z"/></svg></div><div class="bird" style="--y:14vh;--t:6.8s;--dl:3.8s;--sc:0.7;--bc:#2f8a62"><svg viewBox="0 0 60 30" class="bird-svg"><g class="wing wl"><path d="M30 15C22 1 8 1 0 8c10 0 20 4 30 7z"/></g><g class="wing wr"><path d="M30 15C38 1 52 1 60 8c-10 0-20 4-30 7z"/></g><ellipse cx="30" cy="16" rx="4.5" ry="3"/><circle cx="34" cy="14.5" r="2"/><path d="M36 14.5l4 1-4 1z"/></svg></div></div>
+
+
+<div class="toast" id="toast"></div>
+<script>
+
+(function(){
+  const intro=document.getElementById('doorIntro');
+  const app=document.getElementById('app');
+  const title=document.getElementById('joyfulTitlePage');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const OPEN_MS=reduce?900:4600;   // doors open slowly over the second section
+
+  function slowScrollTo(target,dur){
+    const start=app.scrollTop, dist=target-start, t0=performance.now();
+    if(!dur){app.scrollTop=target;return;}
+    const snap=app.style.scrollSnapType, beh=app.style.scrollBehavior;
+    app.style.scrollSnapType='none'; app.style.scrollBehavior='auto';
+    const ease=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;};
+    (function step(now){
+      const t=Math.min(1,(now-t0)/dur);
+      app.scrollTop=start+dist*ease(t);
+      if(t<1){requestAnimationFrame(step);}
+      else{app.style.scrollSnapType=snap;app.style.scrollBehavior=beh;}
+    })(t0);
+  }
+  let started=false;
+  function open(){
+    if(started) return;
+    started=true;
+    intro.classList.add('doors-opening');
+    const fx=document.getElementById('doorFx');
+    if(fx){fx.classList.add('go');window.setTimeout(function(){fx.classList.add('end')},9500);window.setTimeout(function(){fx.remove()},11000);}
+    window.setTimeout(function(){title.classList.add('go')}, reduce?0:900);
+    window.setTimeout(function(){
+      intro.classList.add('done');
+      app.classList.remove('scroll-locked');
+      window.setTimeout(function(){          // one-time gentle scroll to page 2
+        if(app.scrollTop<20) slowScrollTo(window.innerHeight,reduce?0:3600);
+      }, 12000);
+    }, OPEN_MS);
+  }
+  document.querySelectorAll('.kid-down').forEach(function(b){b.addEventListener('click',function(){nextPage();});});
+  intro.addEventListener('click',open);
+  intro.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
+})();
+
+(function(){
+  const box=document.getElementById('kidChips');
+  const page=document.getElementById('complimentsPage');
+  if(!box||!page) return;
+  const colors=['#e8728f','#2f9e72','#e9a23b','#7a8fe0','#d86bb4','#3aa7c4','#f6c768'];
+  box.addEventListener('click',function(e){
+    const chip=e.target.closest('.kid-chip'); if(!chip) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const pr=page.getBoundingClientRect(), cr=chip.getBoundingClientRect();
+    const x=cr.left+cr.width/2-pr.left, y=cr.top+cr.height/2-pr.top;
+    for(let i=0;i<22;i++){
+      const b=document.createElement('i'); b.className='confetti-bit';
+      const ang=Math.random()*Math.PI*2, d=60+Math.random()*110;
+      b.style.cssText='left:'+x+'px;top:'+y+'px;background:'+colors[i%colors.length]+
+        ';--dx:'+Math.cos(ang)*d+'px;--dy:'+(Math.sin(ang)*d+40)+'px;--rot:'+(Math.random()*720-360)+'deg';
+      page.appendChild(b); setTimeout(()=>b.remove(),1400);
+    }
+  });
+})();
+
+(function(){
+  const pages=[...document.querySelectorAll('.page')];
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})
+  },{root:document.querySelector('#app'),threshold:.35});
+  pages.forEach(p=>observer.observe(p));
+
+  const target=new Date('2026-11-09T20:00:00');
+  function tick(){
+    const diff=target-Date.now();
+    if(diff<=0){
+      ['days','hours','mins','secs'].forEach(id=>document.getElementById(id).textContent='0');
+      return;
+    }
+    const s=Math.floor(diff/1000);
+    document.getElementById('days').textContent=Math.floor(s/86400);
+    document.getElementById('hours').textContent=String(Math.floor(s%86400/3600)).padStart(2,'0');
+    document.getElementById('mins').textContent=String(Math.floor(s%3600/60)).padStart(2,'0');
+    document.getElementById('secs').textContent=String(s%60).padStart(2,'0');
+  }
+  if(document.getElementById('days')){tick();setInterval(tick,1000);}
+})();
+function nextPage(){
+  const app=document.getElementById('app');
+  const pages=[...document.querySelectorAll('.page')];
+  const i=pages.findIndex(p=>p.getBoundingClientRect().top>=-5 && p.getBoundingClientRect().top<innerHeight/2);
+  pages[Math.min(i+1,pages.length-1)].scrollIntoView({behavior:'smooth'});
+}
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2600);
+}
+function submitRsvp(e){e.preventDefault();showToast('RSVP submitted — demo only.');e.target.reset();}
+</script>
+</body>
+</html>
