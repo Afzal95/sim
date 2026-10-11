@@ -6,7 +6,7 @@
 <title>Simra Naz &amp; Mohd Altamash — Wedding Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Fredoka:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500;600&family=Great+Vibes&family=Pinyon+Script&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Fredoka:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500;600&family=Great+Vibes&family=Pinyon+Script&family=Playfair+Display:ital,wght@1,400;1,500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --sage:#9ea88f; --sage-dark:#344034; --sage-deep:#273126;
@@ -1036,6 +1036,191 @@
   .name-shard{position:absolute;z-index:5;pointer-events:none;transform-origin:50% 50%}
   .name-shard .name-pop{position:absolute}
 
+
+  /* Second section: names in a clearer, still elegant script */
+  .wedding-intro-page .names .n{
+    font-family:"Dancing Script","Segoe Script","Brush Script MT",cursive;font-weight:700;
+    font-size:clamp(34px,9.6vw,48px);letter-spacing:.01em;line-height:1.2;color:#3a4a39;
+    text-shadow:0 2px 0 rgba(255,250,238,.7);
+  }
+  .wedding-intro-page .names .and{font-family:"Dancing Script","Great Vibes",cursive;font-weight:600;font-size:clamp(28px,8vw,36px)}
+
+  /* Haldi & Nikah titles: a little shimmy every few seconds */
+  .page.visible .haldi-card .haldi-title{
+    animation:reveal .9s cubic-bezier(.22,1,.36,1) .24s forwards,titleFloat 7s ease-in-out 1.2s infinite;
+  }
+  .page.visible .nikah-card .nikah-title{
+    animation:reveal .9s cubic-bezier(.22,1,.36,1) .24s forwards,titleFloat 7s ease-in-out 1.2s infinite;
+  }
+  @keyframes titleFloat{
+    0%,100%{rotate:0deg;translate:0 0;scale:1}
+    25%{rotate:-1.1deg;translate:-2px -2px;scale:1.012}
+    50%{rotate:0deg;translate:0 -3px;scale:1.02}
+    75%{rotate:1.1deg;translate:2px -2px;scale:1.012}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .page.visible .haldi-card .haldi-title,.page.visible .nikah-card .nikah-title{animation:reveal .9s ease .24s forwards}
+  }
+
+  /* Nikah heart icon: tap for a shower of hearts */
+  .nikah-symbol{cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .nikah-symbol:focus-visible{outline:3px solid #c9a064;outline-offset:4px}
+  .flow-heart{position:absolute;z-index:7;pointer-events:none;line-height:1;font-style:normal;
+    text-shadow:0 2px 8px rgba(214,98,126,.35);will-change:transform,opacity}
+
+  /* View location button: rounded pill with a refined font */
+  .nikah-btn{
+    border-radius:999px;padding:14px 32px;border:1px solid #c9a064;
+    font-family:"Cinzel",Georgia,serif;font-weight:600;font-size:12px;letter-spacing:.16em;
+  }
+
+  /* Designer credit on the last page */
+  .designer-credit{
+    position:absolute;z-index:4;left:0;right:0;bottom:34px;text-align:center;
+    font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;
+    font-size:14px;letter-spacing:.05em;color:#8a7266;pointer-events:none;
+  }
+  .designer-credit b{
+    font-family:"Great Vibes","Brush Script MT",cursive;font-style:normal;font-weight:400;
+    font-size:21px;letter-spacing:.02em;color:#2e6b52;margin-left:2px;
+  }
+  @media(max-width:600px){
+    .compliments-page{padding-bottom:64px}
+    .designer-credit{bottom:26px}
+  }
+
+
+  /* Haldi icon: tap for a shower of marigold flowers */
+  .haldi-symbol{cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .haldi-symbol:focus-visible{outline:3px solid #c9a064;outline-offset:4px}
+  .flow-flower{position:absolute;z-index:7;pointer-events:none;line-height:1;font-style:normal;
+    text-shadow:0 2px 8px rgba(214,150,20,.4);will-change:transform,opacity}
+
+  /* Haldi page: brighter, sunny turmeric-yellow mood */
+  .haldi-page{
+    background:
+      radial-gradient(ellipse at 50% 42%, rgba(255,253,230,.98), rgba(255,240,160,.88) 55%, rgba(255,214,80,.6)),
+      radial-gradient(circle at 10% 8%, rgba(255,196,70,.65), transparent 36%),
+      radial-gradient(circle at 92% 92%, rgba(255,222,100,.65), transparent 38%),
+      linear-gradient(140deg,#ffe58a,#ffd54f 48%,#ffeaa6);
+  }
+  .haldi-page::before{border-color:rgba(190,130,20,.55)}
+  .haldi-card{
+    background:rgba(255,251,222,.62);
+    border-color:rgba(206,150,30,.5);
+    box-shadow:0 18px 50px rgba(214,150,20,.22), inset 0 0 0 7px rgba(255,255,255,.3);
+  }
+  .haldi-time{color:#5b5a3a}
+  .haldi-venue{color:#5f5a3c}
+
+
+  /* ===== Second section: lively, happy theme + sleek animations (scoped to this section only) ===== */
+  .wedding-intro-page{
+    background:
+      radial-gradient(ellipse at 50% 38%, rgba(255,255,255,.96), transparent 58%),
+      radial-gradient(ellipse at 6% 10%, rgba(255,170,196,.55), transparent 44%),
+      radial-gradient(ellipse at 96% 14%, rgba(168,235,205,.55), transparent 42%),
+      radial-gradient(ellipse at 90% 92%, rgba(255,222,140,.6), transparent 44%),
+      radial-gradient(ellipse at 8% 90%, rgba(255,190,150,.5), transparent 42%),
+      linear-gradient(145deg,#ffe4dc 0%,#fff7e6 48%,#dcf4e6 100%);
+  }
+  .wedding-intro-page::before{border-color:rgba(236,110,145,.55);animation:joyFrame 5s ease-in-out infinite}
+  .wedding-intro-page::after{border-color:rgba(255,255,255,.95)}
+  @keyframes joyFrame{0%,100%{border-color:rgba(236,110,145,.55)}33%{border-color:rgba(245,166,60,.6)}66%{border-color:rgba(60,185,140,.55)}}
+
+  /* drifting colour glows + floating hearts / flowers / confetti */
+  .joy-fx{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+  .joy-fx .orb{position:absolute;border-radius:50%;filter:blur(38px);opacity:.55;will-change:transform}
+  .joy-fx .orb.o1{width:46vmin;height:46vmin;left:-12vmin;top:6%;background:#ffb3c8;animation:joyOrb 9s ease-in-out infinite alternate}
+  .joy-fx .orb.o2{width:40vmin;height:40vmin;right:-12vmin;bottom:8%;background:#ffe08a;animation:joyOrb 11s ease-in-out -3s infinite alternate-reverse}
+  .joy-fx .orb.o3{width:34vmin;height:34vmin;right:-8vmin;top:2%;background:#a8ecd0;animation:joyOrb 10s ease-in-out -5s infinite alternate}
+  .joy-fx .p{position:absolute;bottom:-40px;left:var(--x);font-size:var(--s,16px);line-height:1;opacity:0;
+    animation:joyRise var(--t,12s) linear var(--d,0s) infinite, joySpin 6s ease-in-out var(--d,0s) infinite alternate}
+  .joy-fx .p.c{width:var(--s,8px);height:var(--s,8px);border-radius:50%;font-size:0}
+  .joy-fx .p.c.sq{border-radius:2px}
+  .joy-fx .p:nth-of-type(5n+1){color:#f0648c}.joy-fx .p:nth-of-type(5n+2){color:#f5a623}
+  .joy-fx .p:nth-of-type(5n+3){color:#2fb58a}.joy-fx .p:nth-of-type(5n+4){color:#ff7a59}.joy-fx .p:nth-of-type(5n){color:#a66ee0}
+  .joy-fx .p.c:nth-of-type(5n+1){background:#f0648c}.joy-fx .p.c:nth-of-type(5n+2){background:#f5a623}
+  .joy-fx .p.c:nth-of-type(5n+3){background:#2fb58a}.joy-fx .p.c:nth-of-type(5n+4){background:#ff7a59}.joy-fx .p.c:nth-of-type(5n){background:#a66ee0}
+  .joy-fx .tw{position:absolute;left:var(--x);top:var(--y);color:#f5b82e;font-size:var(--s,16px);line-height:1;animation:joyTwinkle 2.6s ease-in-out var(--d,0s) infinite}
+  @keyframes joyRise{0%{opacity:0;translate:0 0}10%{opacity:.85}88%{opacity:.85}100%{opacity:0;translate:var(--sway,20px) -112vh}}
+  @keyframes joySpin{from{rotate:-18deg}to{rotate:18deg}}
+  @keyframes joyTwinkle{0%,100%{opacity:.2;scale:.5;rotate:0deg}50%{opacity:1;scale:1.25;rotate:30deg}}
+  @keyframes joyOrb{from{transform:translate(0,0) scale(1)}to{transform:translate(7vmin,-6vmin) scale(1.25)}}
+  .wedding-intro-page:not(.visible) .joy-fx *,.wedding-intro-page:not(.visible)::before{animation-play-state:paused}
+
+  /* fresh leaves */
+  .wedding-intro-page .leaf{background:linear-gradient(135deg,rgba(60,185,140,.38),rgba(255,255,255,.12));animation:joyLeaf 5s ease-in-out infinite alternate}
+  .wedding-intro-page .leaf:nth-child(2){animation-delay:-2s}
+  @keyframes joyLeaf{from{rotate:-6deg}to{rotate:7deg}}
+
+  /* soft glowing card that gently floats */
+  .wedding-intro-content{
+    background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,248,240,.32));
+    box-shadow:0 18px 50px rgba(240,110,150,.2),0 0 0 1px rgba(255,255,255,.75) inset;
+    animation:joyCardFloat 6s ease-in-out infinite;
+  }
+  @keyframes joyCardFloat{0%,100%{translate:0 0}50%{translate:0 -6px}}
+
+  /* corner blooms: bright colours, wobble + pulse */
+  .wedding-intro-page .love-corner{animation:cornerWobble 3.6s ease-in-out infinite,cornerPulse 2.8s ease-in-out infinite;z-index:2}
+  .wedding-intro-page .love-top-left{color:rgba(240,100,140,.9)}
+  .wedding-intro-page .love-top-right{color:rgba(245,166,35,.95);animation-delay:-1s,-.6s}
+  .wedding-intro-page .love-bottom-left{color:rgba(47,181,138,.95);animation-delay:-2s,-1.2s}
+  .wedding-intro-page .love-bottom-right{color:rgba(166,110,224,.9);animation-delay:-.5s,-1.8s}
+
+  /* kicker as a happy pill with beating hearts */
+  .wedding-intro-page .love-kicker{
+    width:fit-content;padding:2px 18px 4px;border-radius:999px;color:#d9467a;
+    background:linear-gradient(90deg,rgba(255,255,255,.75),rgba(255,236,242,.85),rgba(255,255,255,.75));
+    box-shadow:0 4px 14px rgba(240,100,140,.2),0 0 0 1px rgba(240,120,155,.35) inset;
+  }
+  .wedding-intro-page .love-kicker span{color:#f0507f;display:inline-block;animation:joyBeat 1.5s ease-in-out infinite}
+  .wedding-intro-page .love-kicker span:last-child{animation-delay:.25s}
+  @keyframes joyBeat{0%,100%{scale:1}14%{scale:1.35}28%{scale:1}42%{scale:1.2}56%{scale:1}}
+
+  /* warm, readable body text */
+  .wedding-intro-page .invitation-hosts{color:#6b4a52}
+  .wedding-intro-page .groom-parentage{color:#9a5f4a}
+  .wedding-intro-page .love-blessing{color:#c2457a}
+
+  /* sparkle ornament: spins & glows */
+  .love-sparkle{color:#f5902a}
+
+  /* names: colourful shimmering script, floating in turn */
+  .wedding-intro-page .names .n{
+    background:linear-gradient(100deg,#d6407a 0%,#f2724a 28%,#e8a21c 50%,#25a98a 74%,#d6407a 100%);
+    background-size:260% 100%;-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:#d6407a;text-shadow:none;
+    filter:drop-shadow(0 2px 0 rgba(255,255,255,.85)) drop-shadow(0 6px 10px rgba(240,100,140,.25));
+    animation:joyShimmer 6s linear infinite,joyBob 4s ease-in-out infinite;
+  }
+  .wedding-intro-page .names .n:nth-child(3){animation-delay:-2s,-1.6s}
+  .wedding-intro-page .names .and{display:inline-block;color:#f0507f;animation:joyBeat 1.8s ease-in-out infinite,joyAndGlow 2.4s ease-in-out infinite}
+  @keyframes joyShimmer{from{background-position:0 0}to{background-position:-260% 0}}
+  @keyframes joyBob{0%,100%{translate:0 0}50%{translate:0 -4px}}
+  @keyframes joyAndGlow{0%,100%{text-shadow:0 0 0 rgba(240,80,127,0)}50%{text-shadow:0 0 16px rgba(240,80,127,.7)}}
+
+  /* divider: bright, heart beats */
+  .wedding-intro-page .love-divider{color:#f0507f}
+  .wedding-intro-page .love-divider span{background:linear-gradient(90deg,transparent,#f0507f,#f5a623,transparent)}
+  .wedding-intro-page .love-divider i{display:inline-block;animation:joyBeat 1.5s ease-in-out infinite}
+
+  /* entrance + loop together (loops use translate/scale/rotate only, so the reveal effect is untouched) */
+  .page.visible.wedding-intro-page .love-sparkle.reveal{
+    animation:reveal .9s cubic-bezier(.22,1,.36,1) .24s forwards,joySparkSpin 5s ease-in-out 1.2s infinite;
+  }
+  .page.visible.wedding-intro-page .love-blessing.reveal{
+    animation:reveal .9s cubic-bezier(.22,1,.36,1) .36s forwards,joyBob 4.5s ease-in-out 1.3s infinite;
+  }
+  @keyframes joySparkSpin{0%,100%{rotate:0deg;scale:1}50%{rotate:20deg;scale:1.25}}
+
+  @media(prefers-reduced-motion:reduce){
+    .wedding-intro-page::before,.joy-fx *,.wedding-intro-page .leaf,.wedding-intro-content,.wedding-intro-page .love-corner,
+    .wedding-intro-page .love-kicker span,.wedding-intro-page .names .n,.wedding-intro-page .names .and,.wedding-intro-page .love-divider i{animation:none!important}
+    .page.visible.wedding-intro-page .love-sparkle.reveal,.page.visible.wedding-intro-page .love-blessing.reveal{animation:reveal .9s ease forwards}
+    .joy-fx .p{display:none}
+  }
 </style>
 </head>
 <body>
@@ -1062,6 +1247,25 @@
 <section class="page wedding-intro-page" aria-label="Wedding invitation">
   <div class="page-dua" lang="ur" dir="rtl" aria-hidden="true">والْیَوْمِ الْقُدُّوس</div>
   <div class="botanical"><i class="leaf"></i><i class="leaf"></i></div>
+  <div class="joy-fx" aria-hidden="true">
+    <i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i>
+    <span class="p" style="--x:6%;--s:18px;--t:11s;--d:0s;--sway:24px">♥</span>
+    <span class="p" style="--x:16%;--s:14px;--t:13s;--d:-4s;--sway:-20px">✿</span>
+    <span class="p c" style="--x:26%;--s:8px;--t:10s;--d:-7s;--sway:18px"></span>
+    <span class="p" style="--x:36%;--s:16px;--t:14s;--d:-2s;--sway:-26px">♥</span>
+    <span class="p c sq" style="--x:46%;--s:7px;--t:12s;--d:-9s;--sway:22px"></span>
+    <span class="p" style="--x:56%;--s:15px;--t:11.5s;--d:-5s;--sway:-18px">❀</span>
+    <span class="p" style="--x:66%;--s:20px;--t:15s;--d:-1s;--sway:20px">♥</span>
+    <span class="p c" style="--x:74%;--s:9px;--t:10.5s;--d:-6s;--sway:-22px"></span>
+    <span class="p" style="--x:83%;--s:14px;--t:13.5s;--d:-8s;--sway:24px">✿</span>
+    <span class="p c sq" style="--x:91%;--s:8px;--t:12.5s;--d:-3s;--sway:-16px"></span>
+    <span class="p" style="--x:11%;--s:12px;--t:16s;--d:-10s;--sway:18px">✦</span>
+    <span class="p" style="--x:61%;--s:12px;--t:15.5s;--d:-12s;--sway:-24px">✦</span>
+    <span class="tw" style="--x:12%;--y:30%;--s:16px;--d:0s">✦</span>
+    <span class="tw" style="--x:84%;--y:24%;--s:14px;--d:-.9s">✧</span>
+    <span class="tw" style="--x:20%;--y:72%;--s:13px;--d:-1.7s">✧</span>
+    <span class="tw" style="--x:80%;--y:68%;--s:17px;--d:-.4s">✦</span>
+  </div>
   <div class="love-corner love-top-left" aria-hidden="true">❀</div>
   <div class="love-corner love-top-right" aria-hidden="true">❀</div>
   <div class="love-corner love-bottom-left" aria-hidden="true">✿</div>
@@ -1089,7 +1293,7 @@
   <div class="haldi-flower-corner bottom-right" aria-hidden="true">✿</div>
   <div class="content haldi-card">
     <div class="haldi-garland" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-    <div class="haldi-symbol reveal d1" aria-hidden="true">✿</div>
+    <div class="haldi-symbol reveal d1" id="haldiFlower" role="button" tabindex="0" aria-label="Tap for a shower of flowers">✿</div>
     <div class="haldi-kicker reveal d1">A joyful family celebration</div>
     <h2 class="haldi-title reveal d2">Haldi Ceremony</h2>
     <div class="haldi-rule reveal d2" aria-hidden="true"><span>❋</span></div>
@@ -1115,7 +1319,7 @@
   <div class="nikah-heart h4" aria-hidden="true">✧</div>
   <div class="content nikah-card">
     <div class="nikah-garland" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-    <div class="nikah-symbol reveal d1" aria-hidden="true">♥</div>
+    <div class="nikah-symbol reveal d1" id="nikahHeart" role="button" tabindex="0" aria-label="Tap for a shower of hearts">♥</div>
     <div class="nikah-kicker reveal d1">WEDDING INVITATION</div>
     <h2 class="nikah-title reveal d2">Nikah Ceremony</h2>
     <div class="nikah-rule reveal d2" aria-hidden="true"><span>❦</span></div>
@@ -1160,6 +1364,7 @@
     <p class="compliments-all reveal d4">and all dear Friends and Family</p>
     <div class="kid-hint reveal d4" aria-hidden="true"><span class="tap-word"><span class="tap-finger">👆</span>Tap</span> a name for a little magic ✨</div>
   </div>
+  <div class="designer-credit reveal d4">Designed &amp; Created by <b>Afzal Ahmad</b></div>
 </section>
 
 </main>
@@ -1392,6 +1597,75 @@
       };
     };
   });
+})();
+
+(function(){
+  const icon=document.getElementById('nikahHeart');
+  if(!icon) return;
+  const page=icon.closest('.page');
+  const cols=['#e8728f','#d6627e','#f6a9b8','#ff8fa8','#c9a064','#2f8a62','#f4b6c2'];
+  const rnd=function(a,b){return a+Math.random()*(b-a);};
+  let live=0;
+  function release(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!icon.animate) return;
+    if(live>80) return;
+    const pr=page.getBoundingClientRect(), ir=icon.getBoundingClientRect();
+    const x=ir.left+ir.width/2-pr.left, y=ir.top+ir.height/2-pr.top;
+    for(let i=0;i<18;i++){
+      const h=document.createElement('i'); h.className='flow-heart';
+      h.textContent=i%5===4?'\u2661':'\u2665';
+      h.style.cssText='left:'+x+'px;top:'+y+'px;font-size:'+rnd(11,26)+'px;color:'+cols[i%cols.length];
+      page.appendChild(h); live++;
+      // mostly float up and out, some drift sideways and down
+      const ang=Math.random()<.75?rnd(-Math.PI,0):rnd(0,Math.PI);
+      const dist=rnd(130,340), sway=rnd(12,30)*(Math.random()<.5?-1:1);
+      const dx=Math.cos(ang)*dist, dy=Math.sin(ang)*dist-30;
+      const a=h.animate([
+        {transform:'translate(-50%,-50%) translate(0,0) scale(.3) rotate(0deg)',opacity:0},
+        {transform:'translate(-50%,-50%) translate('+(dx*.3+sway)+'px,'+(dy*.3)+'px) scale(1) rotate(12deg)',opacity:1,offset:.18},
+        {transform:'translate(-50%,-50%) translate('+(dx*.7-sway)+'px,'+(dy*.7)+'px) scale(1.1) rotate(-12deg)',opacity:.95,offset:.6},
+        {transform:'translate(-50%,-50%) translate('+dx+'px,'+dy+'px) scale(.8) rotate(16deg)',opacity:0}
+      ],{duration:rnd(1800,3000),delay:rnd(0,520),easing:'ease-out',fill:'both'});
+      a.onfinish=function(){h.remove();live--;};
+    }
+  }
+  icon.addEventListener('click',release);
+  icon.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();release();}});
+})();
+
+(function(){
+  const icon=document.getElementById('haldiFlower');
+  if(!icon) return;
+  const page=icon.closest('.page');
+  const cols=['#f4b400','#e9a23b','#ffcf40','#d98a1c','#ff9f1c','#fff0a8','#e8728f','#2f9e72'];
+  const glyphs=['\u273F','\u2740','\u2741','\u273E'];
+  const rnd=function(a,b){return a+Math.random()*(b-a);};
+  let live=0;
+  function release(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!icon.animate) return;
+    if(live>80) return;
+    const pr=page.getBoundingClientRect(), ir=icon.getBoundingClientRect();
+    const x=ir.left+ir.width/2-pr.left, y=ir.top+ir.height/2-pr.top;
+    for(let i=0;i<18;i++){
+      const h=document.createElement('i'); h.className='flow-flower';
+      h.textContent=glyphs[i%glyphs.length];
+      h.style.cssText='left:'+x+'px;top:'+y+'px;font-size:'+rnd(12,28)+'px;color:'+cols[i%cols.length];
+      page.appendChild(h); live++;
+      // mostly float up and out, some drift sideways and down
+      const ang=Math.random()<.75?rnd(-Math.PI,0):rnd(0,Math.PI);
+      const dist=rnd(130,340), sway=rnd(12,30)*(Math.random()<.5?-1:1);
+      const dx=Math.cos(ang)*dist, dy=Math.sin(ang)*dist-30;
+      const a=h.animate([
+        {transform:'translate(-50%,-50%) translate(0,0) scale(.3) rotate(0deg)',opacity:0},
+        {transform:'translate(-50%,-50%) translate('+(dx*.3+sway)+'px,'+(dy*.3)+'px) scale(1) rotate(40deg)',opacity:1,offset:.18},
+        {transform:'translate(-50%,-50%) translate('+(dx*.7-sway)+'px,'+(dy*.7)+'px) scale(1.1) rotate(-30deg)',opacity:.95,offset:.6},
+        {transform:'translate(-50%,-50%) translate('+dx+'px,'+dy+'px) scale(.8) rotate(80deg)',opacity:0}
+      ],{duration:rnd(1800,3000),delay:rnd(0,520),easing:'ease-out',fill:'both'});
+      a.onfinish=function(){h.remove();live--;};
+    }
+  }
+  icon.addEventListener('click',release);
+  icon.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();release();}});
 })();
 
 (function(){
