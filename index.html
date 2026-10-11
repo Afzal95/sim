@@ -904,6 +904,56 @@
     .wedding-intro-page .love-kicker{font-size:10px;letter-spacing:.16em}
   }
 
+
+  /* Haldi & Nikah pages: livelier icons (animates only rotate / scale / translate / glow, so reveal effects are untouched) */
+  .haldi-symbol,.nikah-symbol{position:relative}
+  .haldi-symbol::after,.nikah-symbol::after{
+    content:"";position:absolute;inset:-2px;border-radius:50%;pointer-events:none;
+    animation:iconRipple 2.6s ease-out infinite;
+  }
+  .haldi-symbol::after{border:2px solid rgba(214,165,52,.75)}
+  .nikah-symbol::after{border:2px solid rgba(214,98,126,.7)}
+  .nikah-symbol::before{
+    content:"";position:absolute;inset:-2px;border-radius:50%;pointer-events:none;
+    border:2px solid rgba(47,138,98,.55);animation:iconRipple 2.6s ease-out 1.3s infinite;
+  }
+  .page.visible .haldi-card .haldi-symbol{
+    animation:reveal .9s cubic-bezier(.22,1,.36,1) .12s forwards,
+              haldiSymbolSpin 5s ease-in-out 1s infinite,
+              haldiSymbolGlow 2.6s ease-in-out 1s infinite;
+  }
+  .page.visible .nikah-card .nikah-symbol{
+    animation:reveal .9s cubic-bezier(.22,1,.36,1) .12s forwards,
+              nikahSymbolBeat 1.9s ease-in-out 1s infinite,
+              nikahSymbolGlow 1.9s ease-in-out 1s infinite;
+  }
+  .haldi-flower-corner{animation:cornerWobble 5s ease-in-out infinite,cornerPulse 3.4s ease-in-out infinite}
+  .haldi-flower-corner.top-right{animation-delay:-1.2s}
+  .haldi-flower-corner.bottom-left{animation-delay:-2.4s}
+  .haldi-flower-corner.bottom-right{animation-delay:-3.6s}
+  .nikah-flower-corner{animation:nikahSway 4s ease-in-out infinite,cornerWobble 5s ease-in-out infinite,cornerPulse 3.4s ease-in-out infinite}
+  .haldi-garland span{animation:garlandSway 2.4s ease-in-out infinite}
+  .haldi-garland span:nth-child(even){animation-delay:-1.2s}
+  .haldi-garland span:nth-child(3n){animation-delay:-.6s}
+  .nikah-heart{animation:nikahFloat 5s ease-in-out infinite,cornerPulse 2.4s ease-in-out infinite}
+  .nikah-heart.h2{animation-delay:-1.7s}
+  .nikah-heart.h3{animation-delay:-3.1s}
+  .nikah-heart.h4{animation-delay:-.9s}
+  @keyframes iconRipple{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.8);opacity:0}}
+  @keyframes haldiSymbolSpin{0%,100%{rotate:0deg;scale:1}25%{rotate:16deg;scale:1.1}50%{rotate:0deg;scale:1}75%{rotate:-16deg;scale:1.1}}
+  @keyframes haldiSymbolGlow{0%,100%{box-shadow:inset 0 0 0 5px rgba(226,190,92,.18),0 0 0 rgba(233,180,60,0)}50%{box-shadow:inset 0 0 0 5px rgba(226,190,92,.35),0 0 24px rgba(233,180,60,.7)}}
+  @keyframes nikahSymbolBeat{0%,100%{scale:1}14%{scale:1.16}28%{scale:1}42%{scale:1.1}56%{scale:1}}
+  @keyframes nikahSymbolGlow{0%,100%{box-shadow:inset 0 0 0 5px rgba(236,168,182,.25),0 0 22px rgba(240,170,185,.45)}14%{box-shadow:inset 0 0 0 5px rgba(236,168,182,.4),0 0 34px rgba(232,114,143,.85)}}
+  @keyframes cornerWobble{0%,100%{rotate:0deg}50%{rotate:14deg}}
+  @keyframes cornerPulse{0%,100%{scale:1}50%{scale:1.18}}
+  @keyframes garlandSway{0%,100%{translate:0 0}50%{translate:0 5px}}
+  @media(prefers-reduced-motion:reduce){
+    .haldi-symbol::after,.nikah-symbol::after,.nikah-symbol::before,
+    .page.visible .haldi-card .haldi-symbol,.page.visible .nikah-card .nikah-symbol,
+    .haldi-flower-corner,.nikah-flower-corner,.haldi-garland span,.nikah-heart{animation:none!important}
+    .page.visible .haldi-card .haldi-symbol,.page.visible .nikah-card .nikah-symbol{opacity:1;transform:none;filter:none}
+  }
+
 </style>
 </head>
 <body>
