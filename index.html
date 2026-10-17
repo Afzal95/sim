@@ -820,7 +820,7 @@
   .heaven-doors::before{
     content:"";position:absolute;inset:0;
     background:radial-gradient(ellipse at 50% 45%,rgba(255,255,232,.98),rgba(255,221,143,.4) 45%,transparent 75%),radial-gradient(ellipse at 50% 50%,rgba(255,246,211,.95),rgba(255,226,150,.55) 45%,rgba(255,236,190,.2) 100%);
-    transition:transform 4s ease,opacity 2.4s ease .5s;
+    transition:transform 2.8s ease,opacity 1.5s ease .3s;
   }
   .heaven-door{
     position:relative;flex:0 0 50%;width:50%;height:100%;
@@ -828,7 +828,7 @@
     background:linear-gradient(100deg,#6b4828 0%,#c39a55 12%,#f4dfa6 24%,#a87938 39%,#dfbd75 52%,#76502a 100%);
     box-shadow:inset 0 0 40px rgba(255,241,188,.75),0 0 40px rgba(32,35,23,.45);
     transform-style:preserve-3d;
-    transition:transform 4.2s cubic-bezier(.5,.05,.25,1),filter 3.2s ease;
+    transition:transform 2.8s cubic-bezier(.5,.05,.25,1),filter 2.2s ease;
   }
   .heaven-door.left{transform-origin:left center;border-right:2px solid #f4d99a}
   .heaven-door.right{transform-origin:right center;border-left:2px solid #f4d99a}
@@ -1349,6 +1349,70 @@
     .vol.tip:not(.open) .vol-tip,.vol.tip:not(.open) .vol-btn,.vt-note,.tap-tip.on,.tt-hand{animation:none!important}
   }
 
+
+
+  /* ===== Gate: cool emerald & rose-gold (instead of yellow), with a clear "Tap to open" ===== */
+  .heaven-door{
+    background-image:linear-gradient(100deg,#0c433c 0%,#17705f 12%,#5fd0b3 24%,#14705f 39%,#2fb090 52%,#0b3f38 100%);
+    outline-color:rgba(6,40,34,.8);
+    box-shadow:inset 0 0 40px rgba(170,255,232,.45),0 0 40px rgba(20,30,28,.5);
+  }
+  .heaven-door.left{border-right-color:#f6c9d5}
+  .heaven-door.right{border-left-color:#f6c9d5}
+  .heaven-door::before{
+    border-color:rgba(255,214,228,.92);
+    box-shadow:inset 0 0 0 3px rgba(5,50,42,.5),inset 0 0 25px rgba(190,255,238,.3);
+  }
+  .heaven-door::after{color:#ffe1ea;text-shadow:0 2px 12px #0a3a33,0 0 22px rgba(255,170,205,.95)}
+  .heaven-door .door-ornament{border-color:rgba(255,214,228,.85);box-shadow:inset 0 0 12px rgba(255,200,222,.45)}
+  .heaven-door .door-ornament::before{color:#ffe1ea}
+  .heaven-door .door-knob{background:radial-gradient(circle at 30% 25%,#fff4f7,#f0a6bb 60%,#8a3358);box-shadow:0 0 12px #ffb9cf}
+  .heaven-doors::before{
+    background:
+      radial-gradient(ellipse at 50% 45%,rgba(255,248,252,.98),rgba(255,196,220,.45) 45%,transparent 75%),
+      radial-gradient(ellipse at 50% 50%,rgba(255,244,250,.95),rgba(255,214,232,.55) 45%,rgba(204,255,236,.25) 100%);
+  }
+  .heaven-sparkles{color:#ffe6f1;text-shadow:0 0 12px #ff9fc4}
+  .door-seam{background:linear-gradient(90deg,transparent,rgba(255,214,232,.9),transparent)}
+  .door-shine{background:linear-gradient(100deg,transparent,rgba(235,255,250,0) 20%,rgba(235,255,250,.55) 50%,rgba(235,255,250,0) 80%,transparent)}
+  .door-orb.o3{background:#b9a6ff}
+  .tap-ring{border-color:rgba(255,235,244,.95);box-shadow:0 0 14px rgba(255,160,200,.9)}
+  .tap-hand{stroke:#c0577f}
+  .heaven-door-caption{display:none}
+
+  .gate-cta{
+    position:absolute;left:50%;top:calc(56% + 96px);transform:translateX(-50%);white-space:nowrap;overflow:hidden;
+    display:inline-flex;align-items:center;gap:10px;padding:11px 24px 12px;border-radius:999px;border:2px solid #fff;
+    font-family:"Fredoka","Trebuchet MS","Segoe UI",Arial,sans-serif;font-weight:600;font-size:16px;letter-spacing:.2em;text-transform:uppercase;
+    color:#fff;text-shadow:0 1px 4px rgba(120,20,60,.35);
+    background:linear-gradient(145deg,#ff9fbd,#e8528f 60%,#c43d7a);
+    box-shadow:0 8px 22px rgba(196,61,122,.5),0 0 0 6px rgba(255,255,255,.18),inset 0 -3px 0 rgba(0,0,0,.1);
+    animation:ctaPulse 1.8s ease-in-out infinite;
+  }
+  .gate-cta::after{
+    content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;pointer-events:none;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+    transform:skewX(-20deg);animation:ctaShine 2.6s ease-in-out infinite;
+  }
+  .gc-spark{display:inline-block;color:#ffe9f1;animation:heaven-twinkle 1.4s ease-in-out infinite alternate}
+  .gc-spark:last-child{animation-delay:-.7s}
+  @keyframes ctaPulse{0%,100%{scale:1}50%{scale:1.07}}
+  @keyframes ctaShine{0%{left:-60%}60%,100%{left:130%}}
+
+  /* the 2-second build-up after the tap (the song starts right away, the gate opens after it) */
+  .door-intro.charging .tap-hint,.door-intro.charging .gate-cta{opacity:0;transition:opacity .4s ease}
+  .door-intro.charging .door-seam{animation:seamCharge 2s ease-in forwards}
+  .door-intro.charging .heaven-door.left,.door-intro.charging .heaven-door.right{
+    animation:doorHue 7s ease-in-out infinite alternate,doorTremble .14s linear infinite;
+  }
+  .door-intro.charging .heaven-sparkles span{animation-duration:.5s}
+  .door-intro.charging .heaven-doors::before{transform:scale(1.2);transition:transform 2s ease}
+  @keyframes seamCharge{0%{opacity:.5;width:36px;margin-left:-18px}100%{opacity:1;width:96px;margin-left:-48px}}
+  @keyframes doorTremble{0%,100%{translate:0 0}25%{translate:-1.5px .5px}75%{translate:1.5px -.5px}}
+  @media(prefers-reduced-motion:reduce){
+    .gate-cta,.gate-cta::after,.gc-spark,.door-intro.charging .heaven-door.left,.door-intro.charging .heaven-door.right,.door-intro.charging .door-seam{animation:none!important}
+  }
+
 </style>
 </head>
 <body>
@@ -1501,9 +1565,9 @@
       <div class="heaven-sparkles"><span>✧</span><span>✦</span><span>✧</span><span>✦</span></div>
       <div class="heaven-door left"><span class="door-ornament"></span><span class="door-knob"></span></div>
       <div class="heaven-door right"><span class="door-ornament"></span><span class="door-knob"></span></div>
-      <div class="heaven-door-caption">Tap to open</div>
+      <div class="heaven-door-caption">Open Your Invitation</div>
     </div>
-    <div class="door-live" aria-hidden="true"><i class="door-shine"></i><i class="door-seam"></i><i class="door-orb o1"></i><i class="door-orb o2"></i><i class="door-orb o3"></i><div class="tap-hint"><i class="tap-ring r1"></i><i class="tap-ring r2"></i><i class="tap-ring r3"></i><svg class="tap-hand" viewBox="0 0 40 48" width="46" height="55"><rect x="15" y="2" width="9" height="24" rx="4.5"/><path d="M8 27q0-4 4-4h20q4 0 4 4v8q0 10-10 12h-8q-10-2-10-12z"/></svg></div></div>
+    <div class="door-live" aria-hidden="true"><i class="door-shine"></i><i class="door-seam"></i><i class="door-orb o1"></i><i class="door-orb o2"></i><i class="door-orb o3"></i><div class="tap-hint"><i class="tap-ring r1"></i><i class="tap-ring r2"></i><i class="tap-ring r3"></i><svg class="tap-hand" viewBox="0 0 40 48" width="46" height="55"><rect x="15" y="2" width="9" height="24" rx="4.5"/><path d="M8 27q0-4 4-4h20q4 0 4 4v8q0 10-10 12h-8q-10-2-10-12z"/></svg></div><div class="gate-cta"><span class="gc-spark">✦</span>Open Your Invitation<span class="gc-spark">✦</span></div></div>
     <div class="door-petals" aria-hidden="true"><i class="dp pk" style="left:33.1%;--s:0.80;--d:12.9s;--l:-1.1s;--x:8px"></i><i class="dp gd" style="left:11.0%;--s:1.08;--d:14.5s;--l:-3.2s;--x:-49px"></i><i class="dp gr" style="left:43.6%;--s:0.75;--d:9.5s;--l:-6.4s;--x:45px"></i><i class="dp rs" style="left:56.3%;--s:1.32;--d:12.8s;--l:-8.7s;--x:-53px"></i><i class="dp pk" style="left:57.4%;--s:0.96;--d:14.9s;--l:-0.7s;--x:49px"></i><i class="dp gd" style="left:14.8%;--s:0.97;--d:12.2s;--l:-8.6s;--x:11px"></i><i class="dp gr" style="left:80.3%;--s:0.82;--d:12.5s;--l:-9.6s;--x:-13px"></i><i class="dp rs" style="left:11.4%;--s:1.16;--d:12.4s;--l:-9.3s;--x:3px"></i><i class="dp pk" style="left:67.3%;--s:0.98;--d:10.9s;--l:-8.8s;--x:-2px"></i><i class="dp gd" style="left:36.7%;--s:0.86;--d:10.1s;--l:-11.7s;--x:-50px"></i><i class="dp gr" style="left:57.1%;--s:1.04;--d:14.3s;--l:-10.9s;--x:-24px"></i></div>
 
 </div>
@@ -1533,7 +1597,7 @@
   const app=document.getElementById('app');
   const title=document.getElementById('joyfulTitlePage');
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const OPEN_MS=reduce?900:4600;   // doors open slowly over the second section
+  const OPEN_MS=reduce?900:3000;   // doors open smoothly in less time
 
   function slowScrollTo(target,dur){
     const start=app.scrollTop, dist=target-start, t0=performance.now();
@@ -1567,11 +1631,17 @@
     if(document.hidden) music.pause(); else music.play().catch(function(){});
   });
   let started=false;
+  const LEAD_MS=reduce?0:500;     // brief pause before the gate starts opening
   function open(){
     if(started) return;
     started=true;
-    intro.classList.add('doors-opening');
     startMusic();
+    intro.classList.add('charging');
+    window.setTimeout(openDoors,LEAD_MS);
+  }
+  function openDoors(){
+    intro.classList.remove('charging');
+    intro.classList.add('doors-opening');
     const fx=document.getElementById('doorFx');
     if(fx){fx.classList.add('go');window.setTimeout(function(){fx.classList.add('end')},9500);window.setTimeout(function(){fx.remove()},11000);}
     window.setTimeout(function(){title.classList.add('go')}, reduce?0:900);
