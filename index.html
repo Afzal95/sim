@@ -1114,6 +1114,7 @@
   .haldi-venue{color:#5f5a3c}
 
 
+
   /* ===== Second section: lively, happy theme + sleek animations (scoped to this section only) ===== */
   .wedding-intro-page{
     background:
@@ -1221,6 +1222,91 @@
     .page.visible.wedding-intro-page .love-sparkle.reveal,.page.visible.wedding-intro-page .love-blessing.reveal{animation:reveal .9s ease forwards}
     .joy-fx .p{display:none}
   }
+
+
+  /* Music volume control — one floating control for every section */
+  .vol{
+    position:fixed;z-index:60;top:calc(env(safe-area-inset-top,0px) + 10px);right:10px;
+    opacity:0;visibility:hidden;transform:scale(.3);transform-origin:top right;
+    transition:opacity .4s ease,transform .6s cubic-bezier(.3,1.6,.5,1),visibility .4s;
+    font-family:"Fredoka","Trebuchet MS","Segoe UI",Arial,sans-serif;
+  }
+  .vol.show{opacity:1;visibility:visible;transform:none}
+  .vol-btn{
+    position:relative;display:grid;place-items:center;width:44px;height:44px;padding:0;cursor:pointer;
+    border:2px solid #fff;border-radius:50%;-webkit-tap-highlight-color:transparent;
+    background:linear-gradient(145deg,#f7a6b9,#e8728f 55%,#e9a23b);
+    box-shadow:0 6px 14px rgba(214,98,126,.4),inset 0 -3px 0 rgba(0,0,0,.08);
+    transition:transform .2s ease;
+  }
+  .vol-btn:active{transform:scale(.9)}
+  .vol-btn:focus-visible{outline:3px solid #c9a064;outline-offset:3px}
+  .vol-btn::after{content:"";position:absolute;inset:-2px;border-radius:50%;pointer-events:none;border:2px solid rgba(232,114,143,.7);opacity:0}
+  .vol.playing .vol-btn::after{animation:iconRipple 2s ease-out infinite}
+  .vol-bars{display:flex;align-items:flex-end;gap:3px;height:18px}
+  .vol-bars i{display:block;width:4px;height:18px;border-radius:2px;background:#fff;transform-origin:50% 100%;transform:scaleY(.25)}
+  .vol.playing .vol-bars i{animation:volBar .9s ease-in-out infinite alternate}
+  .vol.playing .vol-bars i:nth-child(2){animation-duration:.7s;animation-delay:-.3s}
+  .vol.playing .vol-bars i:nth-child(3){animation-duration:1.1s;animation-delay:-.6s}
+  .vol.playing .vol-bars i:nth-child(4){animation-duration:.8s;animation-delay:-.15s}
+  .vol.muted .vol-bars i{animation:none!important;transform:scaleY(.25)}
+  .vol.muted .vol-btn::before{
+    content:"";position:absolute;width:30px;height:3px;border-radius:2px;background:#fff;
+    transform:rotate(-45deg);box-shadow:0 0 0 1.5px rgba(214,98,126,.75);
+  }
+  .vol-panel{
+    position:absolute;top:56px;right:0;width:212px;padding:12px 14px 13px;
+    border:2px solid #fff;border-radius:20px;
+    background:linear-gradient(180deg,#fffdf9,#fff1ee);
+    box-shadow:0 12px 28px rgba(176,92,112,.3),0 0 0 1px rgba(232,114,143,.35);
+    opacity:0;visibility:hidden;transform:scale(.6) translateY(-8px);transform-origin:top right;
+    transition:transform .4s cubic-bezier(.3,1.5,.5,1),opacity .2s ease,visibility .2s;
+  }
+  .vol.open .vol-panel{opacity:1;visibility:visible;transform:none}
+  .vol-panel::before{
+    content:"";position:absolute;top:-8px;right:16px;width:14px;height:14px;
+    background:#fffdf9;border-top:2px solid #fff;border-left:2px solid #fff;transform:rotate(45deg);
+  }
+  .vol-top{display:flex;align-items:center;gap:9px;color:#8f3b52}
+  .vol-face{font-size:28px;line-height:1;display:inline-block;animation:volBob 1.6s ease-in-out infinite}
+  .vol-title{display:block;font-weight:600;font-size:14px;line-height:1.15}
+  .vol-pct{display:block;font-size:11px;letter-spacing:.12em;color:#a07f6b}
+  .vol-range{
+    -webkit-appearance:none;appearance:none;display:block;width:100%;height:12px;margin:14px 0 10px;padding:0;
+    border:0;border-radius:999px;outline:none;cursor:pointer;
+    background:linear-gradient(90deg,#f7a6b9,#e8728f var(--p,100%),#fbe3ea var(--p,100%));
+    box-shadow:inset 0 1px 3px rgba(150,60,80,.25);
+  }
+  .vol-range::-webkit-slider-runnable-track{height:12px;background:transparent}
+  .vol-range::-moz-range-track{height:12px;background:transparent}
+  .vol-range::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;width:32px;height:32px;margin-top:-10px;border:0;border-radius:0;
+    background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cpath%20d='M16%2028S3%2019.5%203%2011.2C3%207%206.2%204.5%209.6%204.5c2.6%200%204.8%201.5%206.4%203.9%201.6-2.4%203.8-3.9%206.4-3.9C25.8%204.5%2029%207%2029%2011.2%2029%2019.5%2016%2028%2016%2028z'%20fill='%23e8728f'%20stroke='white'%20stroke-width='2.5'%20stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+    filter:drop-shadow(0 2px 3px rgba(150,40,70,.45));transition:transform .15s ease;
+  }
+  .vol-range::-moz-range-thumb{
+    width:32px;height:32px;border:0;border-radius:0;
+    background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cpath%20d='M16%2028S3%2019.5%203%2011.2C3%207%206.2%204.5%209.6%204.5c2.6%200%204.8%201.5%206.4%203.9%201.6-2.4%203.8-3.9%206.4-3.9C25.8%204.5%2029%207%2029%2011.2%2029%2019.5%2016%2028%2016%2028z'%20fill='%23e8728f'%20stroke='white'%20stroke-width='2.5'%20stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+    filter:drop-shadow(0 2px 3px rgba(150,40,70,.45));
+  }
+  .vol-range:active::-webkit-slider-thumb{transform:scale(1.25)}
+  .vol-range:focus-visible{outline:3px solid #c9a064;outline-offset:4px}
+  .vol-mute{
+    display:inline-flex;align-items:center;gap:6px;padding:5px 13px;cursor:pointer;
+    border:2px solid #fff;border-radius:999px;color:#fff;font:inherit;font-weight:600;font-size:12px;letter-spacing:.08em;
+    background:linear-gradient(145deg,#7fcfa6,#2f9e72);box-shadow:0 4px 10px rgba(47,158,114,.35);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .vol-mute:active{transform:scale(.94)}
+  .vol.muted .vol-mute{background:linear-gradient(145deg,#f7a6b9,#e8728f);box-shadow:0 4px 10px rgba(214,98,126,.35)}
+  @keyframes volBar{from{transform:scaleY(.2)}to{transform:scaleY(1)}}
+  @keyframes volBob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-3px) rotate(6deg)}}
+  @media(prefers-reduced-motion:reduce){
+    .vol,.vol-panel{transition:none}
+    .vol.playing .vol-btn::after,.vol.playing .vol-bars i,.vol-face{animation:none!important}
+    .vol.playing .vol-bars i{transform:scaleY(.7)}
+  }
+
 </style>
 </head>
 <body>
@@ -1360,7 +1446,7 @@
     </div>
     <div class="kid-rule reveal d2" aria-hidden="true"><span>✦</span><i>♥</i><span>✦</span></div>
     <h2 class="compliments-title reveal d2">With Best Compliments From:-</h2>
-    <div class="kid-chips reveal d3" id="kidChips"><button type="button" class="kid-chip" style="--i:0;--c:#e8728f">Zahra</button><button type="button" class="kid-chip" style="--i:1;--c:#2f9e72">Haniya</button><button type="button" class="kid-chip" style="--i:2;--c:#e9a23b">Areeba</button><button type="button" class="kid-chip" style="--i:3;--c:#7a8fe0">Anaviya</button><button type="button" class="kid-chip" style="--i:4;--c:#d86bb4">Umama</button><button type="button" class="kid-chip" style="--i:5;--c:#3aa7c4">Nida</button><button type="button" class="kid-chip" style="--i:6;--c:#e8728f">Shifa</button><button type="button" class="kid-chip" style="--i:7;--c:#2f9e72">Hamza</button><button type="button" class="kid-chip" style="--i:8;--c:#e9a23b">Zaif</button><button type="button" class="kid-chip" style="--i:9;--c:#7a8fe0">Farhan</button><button type="button" class="kid-chip" style="--i:10;--c:#d86bb4">Azlan</button><button type="button" class="kid-chip" style="--i:11;--c:#3aa7c4">Rehan</button><button type="button" class="kid-chip" style="--i:12;--c:#e8728f">Samar</button><button type="button" class="kid-chip" style="--i:13;--c:#2f9e72">Ayan</button><button type="button" class="kid-chip" style="--i:14;--c:#e9a23b">Rizal</button><button type="button" class="kid-chip" style="--i:15;--c:#7a8fe0">Kashan</button><button type="button" class="kid-chip" style="--i:16;--c:#d86bb4">Afzal</button></div>
+    <div class="kid-chips reveal d3" id="kidChips"><button type="button" class="kid-chip" style="--i:0;--c:#e8728f">Zahra</button><button type="button" class="kid-chip" style="--i:1;--c:#2f9e72">Haniya</button><button type="button" class="kid-chip" style="--i:2;--c:#e9a23b">Areeba</button><button type="button" class="kid-chip" style="--i:3;--c:#7a8fe0">Anaviya</button><button type="button" class="kid-chip" style="--i:4;--c:#d86bb4">Umama</button><button type="button" class="kid-chip" style="--i:5;--c:#3aa7c4">Nida</button><button type="button" class="kid-chip" style="--i:6;--c:#e8728f">Shifa</button><button type="button" class="kid-chip" style="--i:7;--c:#2f9e72">Hamza</button><button type="button" class="kid-chip" style="--i:8;--c:#e9a23b">Zaif</button><button type="button" class="kid-chip" style="--i:9;--c:#7a8fe0">Farhan</button><button type="button" class="kid-chip" style="--i:10;--c:#d86bb4">Azlan</button><button type="button" class="kid-chip" style="--i:11;--c:#3aa7c4">Rehan</button><button type="button" class="kid-chip" style="--i:12;--c:#e8728f">Samar</button><button type="button" class="kid-chip" style="--i:13;--c:#2f9e72">Ayan</button><button type="button" class="kid-chip" style="--i:14;--c:#e9a23b">Rizal</button><button type="button" class="kid-chip" style="--i:15;--c:#7a8fe0">Kashan</button><button type="button" class="kid-chip" style="--i:16;--c:#d86bb4">Afzal</button><button type="button" class="kid-chip" style="--i:13;--c:#2f9e72">Adnan</button></div>
     <p class="compliments-all reveal d4">and all dear Friends and Family</p>
     <div class="kid-hint reveal d4" aria-hidden="true"><span class="tap-word"><span class="tap-finger">👆</span>Tap</span> a name for a little magic ✨</div>
   </div>
@@ -1383,6 +1469,19 @@
 
 
 <audio id="bgMusic" src="wedding-music.aac" loop preload="auto"></audio>
+<div class="vol" id="vol">
+  <button type="button" class="vol-btn" id="volBtn" aria-label="Music volume" aria-expanded="false" aria-controls="volPanel">
+    <span class="vol-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  </button>
+  <div class="vol-panel" id="volPanel" role="group" aria-label="Music volume">
+    <div class="vol-top">
+      <span class="vol-face" id="volFace" aria-hidden="true">🥳</span>
+      <span><span class="vol-title" id="volTitle">PARTY MODE!</span><span class="vol-pct" id="volPct">100%</span></span>
+    </div>
+    <input type="range" class="vol-range" id="volRange" min="0" max="100" step="1" value="100" aria-label="Volume">
+    <button type="button" class="vol-mute" id="volMute"><span id="volMuteIcon">🔇</span><span id="volMuteText">Mute</span></button>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 <script>
 
@@ -1666,6 +1765,175 @@
   }
   icon.addEventListener('click',release);
   icon.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();release();}});
+})();
+
+(function(){
+  const music=document.getElementById('bgMusic');
+  const wrap=document.getElementById('vol');
+  const app=document.getElementById('app');
+  if(!music||!wrap) return;
+  const btn=document.getElementById('volBtn'), range=document.getElementById('volRange');
+  const face=document.getElementById('volFace'), title=document.getElementById('volTitle'), pct=document.getElementById('volPct');
+  const mute=document.getElementById('volMute'), muteIcon=document.getElementById('volMuteIcon'), muteText=document.getElementById('volMuteText');
+  let level=1, muted=false, closeT=null, ctx=null, gain=null;
+
+  // iPhones ignore audio.volume, so fall back to a Web Audio gain node there
+  const probe=new Audio(); probe.volume=.5;
+  const nativeVolume=Math.abs(probe.volume-.5)<.001;
+  function ensureGain(){
+    if(ctx) return;
+    const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return;
+    try{
+      ctx=new AC(); const src=ctx.createMediaElementSource(music);
+      gain=ctx.createGain(); src.connect(gain); gain.connect(ctx.destination);
+    }catch(e){ ctx=null; gain=null; }
+    if(ctx&&ctx.state==='suspended') ctx.resume();
+  }
+  function apply(){
+    music.muted=muted;
+    if(nativeVolume){ music.volume=level; }
+    else{ ensureGain(); if(gain) gain.gain.value=level; }
+  }
+  function mood(v){
+    if(muted||v===0) return ['🤐','Silent disco…'];
+    if(v<=25) return ['🙊','Whisper mode'];
+    if(v<=50) return ['😌','Cozy vibes'];
+    if(v<=75) return ['😄','Feeling it!'];
+    return ['🥳','PARTY MODE!'];
+  }
+  function update(){
+    const v=Math.round(level*100), off=muted||v===0;
+    range.value=v; range.style.setProperty('--p',v+'%');
+    pct.textContent=off?'MUTED':v+'%';
+    const m=mood(v); face.textContent=m[0]; title.textContent=m[1];
+    wrap.classList.toggle('muted',off);
+    muteIcon.textContent=off?'🔊':'🔇'; muteText.textContent=off?'Unmute':'Mute';
+  }
+  function open(){ wrap.classList.add('open'); btn.setAttribute('aria-expanded','true'); poke(); }
+  function close(){ wrap.classList.remove('open'); btn.setAttribute('aria-expanded','false'); clearTimeout(closeT); }
+  function poke(){ clearTimeout(closeT); closeT=setTimeout(close,4500); }
+
+  btn.addEventListener('click',function(){ wrap.classList.contains('open')?close():open(); });
+  range.addEventListener('input',function(){
+    level=range.value/100; if(level>0) muted=false;
+    apply(); update(); poke();
+  });
+  mute.addEventListener('click',function(){
+    const off=muted||level===0;
+    if(off){ muted=false; if(level===0) level=.5; } else { muted=true; }
+    apply(); update(); poke();
+  });
+  document.addEventListener('pointerdown',function(e){ if(!wrap.contains(e.target)) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+
+  // bars dance only while the music is actually playing
+  function sync(){ wrap.classList.toggle('playing',!music.paused&&!music.muted); }
+  ['play','pause','volumechange'].forEach(function(ev){ music.addEventListener(ev,sync); });
+
+  // appear once the opening doors are done
+  function reveal(){ if(!app.classList.contains('scroll-locked')){ wrap.classList.add('show'); } }
+  new MutationObserver(reveal).observe(app,{attributes:true,attributeFilter:['class']});
+  reveal(); update(); sync();
+})();
+
+(function(){
+  // Auto-scroll by dwell time: whenever the visitor rests on a section for longer than that
+  // section's delay, glide down to the next one. Works every time a section is visited
+  // (first visit, after scrolling manually, or after going back). Manual scrolling restarts the count.
+  const app=document.getElementById('app');
+  const pages=[...document.querySelectorAll('.page')];
+  const DELAYS=[5000,15000,6000,6000,null];      // ms to rest on each section (null = never auto-scroll)
+  const DURATION=1700;                            // length of the glide in ms
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ready=false, timer=null, timerIdx=-1, touching=false, idleT=null, tY=0, anim=null;
+
+  function current(){
+    let best=0,bd=1e9;
+    pages.forEach(function(p,i){const d=Math.abs(p.getBoundingClientRect().top);if(d<bd){bd=d;best=i;}});
+    return best;
+  }
+  function clearTimer(){ if(timer){clearTimeout(timer);timer=null;} timerIdx=-1; }
+  function armSoon(ms){ clearTimeout(idleT); idleT=setTimeout(arm,ms||300); }
+
+  // start counting for the section we are resting on
+  function arm(){
+    if(!ready||touching||anim) return;
+    const i=current();
+    if(timer&&timerIdx===i) return;               // already counting for this section
+    clearTimer();
+    if(DELAYS[i]==null) return;
+    timerIdx=i;
+    timer=setTimeout(fire,DELAYS[i]);
+  }
+  function fire(){
+    const i=timerIdx; timer=null; timerIdx=-1;
+    if(i<0||i>=pages.length-1||touching||current()!==i) return;
+    glide(pages[i+1]);
+  }
+
+  // very smooth, eased glide to a section
+  function release(a){
+    app.style.scrollSnapType=a.snap; app.style.scrollBehavior=a.beh;
+    if(anim===a) anim=null;
+  }
+  function glide(page){
+    const start=app.scrollTop;
+    const target=page.getBoundingClientRect().top-app.getBoundingClientRect().top+start;
+    if(reduce||Math.abs(target-start)<2){ app.scrollTop=target; armSoon(300); return; }
+    const a={stop:false,snap:app.style.scrollSnapType,beh:app.style.scrollBehavior};
+    anim=a;
+    app.style.scrollSnapType='none'; app.style.scrollBehavior='auto';
+    const ease=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;};
+    const t0=performance.now();
+    (function step(now){
+      if(a.stop) return;
+      const t=Math.min(1,Math.max(0,(now-t0)/DURATION));
+      app.scrollTop=start+(target-start)*ease(t);
+      if(t<1){ requestAnimationFrame(step); }
+      else{ release(a); armSoon(300); }
+    })(t0);
+  }
+  function cancelGlide(){
+    if(!anim) return;
+    const a=anim; a.stop=true; release(a);
+  }
+
+  // the visitor scrolled / navigated by hand: stop any glide and restart the count once things settle
+  function manual(){
+    if(!ready) return;
+    cancelGlide(); clearTimer(); armSoon(700);
+  }
+
+  // unlock after the opening doors; start counting on the first section
+  function checkReady(){
+    if(!ready&&!app.classList.contains('scroll-locked')){ ready=true; arm(); }
+  }
+  new MutationObserver(checkReady).observe(app,{attributes:true,attributeFilter:['class']});
+  checkReady();
+
+  // after any movement between sections, wait until it goes quiet, then count for the section we landed on
+  app.addEventListener('scroll',function(){
+    if(!ready||anim) return;
+    if(timer&&current()!==timerIdx) clearTimer();
+    armSoon(300);
+  },{passive:true});
+
+  // manual input (taps on icons / names are not scrolling, so they do not restart the count)
+  document.addEventListener('touchstart',function(e){ touching=true; tY=e.touches[0].clientY; cancelGlide(); },{passive:true});
+  document.addEventListener('touchmove',function(e){
+    if(Math.abs(e.touches[0].clientY-tY)>10) manual();
+  },{passive:true});
+  function touchDone(){ touching=false; armSoon(350); }
+  document.addEventListener('touchend',touchDone,{passive:true});
+  document.addEventListener('touchcancel',touchDone,{passive:true});
+  document.addEventListener('wheel',function(e){ if(Math.abs(e.deltaY)>1) manual(); },{passive:true});
+  document.addEventListener('keydown',function(e){
+    const t=e.target&&e.target.tagName;
+    if(t==='INPUT'||t==='TEXTAREA'||t==='SELECT') return;
+    if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].indexOf(e.key)>-1) manual();
+  });
+  app.addEventListener('pointerdown',function(e){ if(e.target===app) manual(); }); // dragging the scrollbar
+  document.querySelectorAll('.kid-down').forEach(function(b){ b.addEventListener('click',manual); });
 })();
 
 (function(){
