@@ -1307,6 +1307,48 @@
     .vol.playing .vol-bars i{transform:scaleY(.7)}
   }
 
+
+
+  /* One-time hints: volume button + tappable icons */
+  .vol-tip{
+    position:absolute;top:56px;right:0;width:190px;padding:9px 13px 10px;
+    border:2px solid #fff;border-radius:16px;color:#8f3b52;
+    font-size:13px;font-weight:500;line-height:1.3;letter-spacing:.01em;
+    background:linear-gradient(180deg,#fffdf9,#ffeef0);
+    box-shadow:0 10px 24px rgba(176,92,112,.28),0 0 0 1px rgba(232,114,143,.35);
+    opacity:0;visibility:hidden;pointer-events:none;transform-origin:top right;
+    transform:scale(.6) translateY(-6px);
+    transition:opacity .35s ease,transform .5s cubic-bezier(.3,1.6,.5,1),visibility .35s;
+  }
+  .vol-tip::before{
+    content:"";position:absolute;top:-8px;right:16px;width:14px;height:14px;
+    background:#fffdf9;border-top:2px solid #fff;border-left:2px solid #fff;transform:rotate(45deg);
+  }
+  .vol.tip:not(.open) .vol-tip{opacity:1;visibility:visible;transform:none;animation:tipBob 2.2s ease-in-out .6s infinite}
+  .vt-note{display:inline-block;margin-right:5px;animation:volBob 1.6s ease-in-out infinite}
+  .vol.tip:not(.open) .vol-btn{animation:volNudge 1.8s ease-in-out infinite}
+  @keyframes tipBob{0%,100%{translate:0 0}50%{translate:0 4px}}
+  @keyframes volNudge{0%,100%{scale:1}50%{scale:1.1}}
+
+  .tap-tip{
+    position:absolute;z-index:7;pointer-events:none;display:inline-flex;align-items:center;gap:6px;
+    padding:5px 13px 6px 9px;border:2px solid #fff;border-radius:999px;color:#fff;white-space:nowrap;
+    font-family:"Fredoka","Trebuchet MS","Segoe UI",Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;
+    text-shadow:0 1px 3px rgba(0,0,0,.18);
+    opacity:0;transform:translateY(-50%) scale(.5);transform-origin:left center;
+    transition:opacity .35s ease,transform .55s cubic-bezier(.3,1.6,.5,1);
+  }
+  .tap-tip.on{opacity:1;transform:translateY(-50%) scale(1);animation:tipSlide 1.3s ease-in-out .5s infinite}
+  .tap-tip.tt-haldi{background:linear-gradient(145deg,#ffd66b,#f0a020);box-shadow:0 5px 12px rgba(214,150,20,.4)}
+  .tap-tip.tt-nikah{background:linear-gradient(145deg,#f7a6b9,#e8728f);box-shadow:0 5px 12px rgba(214,98,126,.4)}
+  .tt-hand{display:inline-block;font-size:1.3em;line-height:1;letter-spacing:0;animation:ttHand 1.3s ease-in-out infinite}
+  @keyframes tipSlide{0%,100%{translate:0 0}50%{translate:4px 0}}
+  @keyframes ttHand{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}
+  @media(prefers-reduced-motion:reduce){
+    .vol-tip,.tap-tip{transition:none}
+    .vol.tip:not(.open) .vol-tip,.vol.tip:not(.open) .vol-btn,.vt-note,.tap-tip.on,.tt-hand{animation:none!important}
+  }
+
 </style>
 </head>
 <body>
@@ -1470,6 +1512,7 @@
 
 <audio id="bgMusic" src="wedding-music.aac" loop preload="auto"></audio>
 <div class="vol" id="vol">
+  <div class="vol-tip" id="volTip" aria-hidden="true"><span class="vt-note">🎶</span>Psst! Tap here to set the music volume</div>
   <button type="button" class="vol-btn" id="volBtn" aria-label="Music volume" aria-expanded="false" aria-controls="volPanel">
     <span class="vol-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
   </button>
@@ -1809,7 +1852,7 @@
     wrap.classList.toggle('muted',off);
     muteIcon.textContent=off?'🔊':'🔇'; muteText.textContent=off?'Unmute':'Mute';
   }
-  function open(){ wrap.classList.add('open'); btn.setAttribute('aria-expanded','true'); poke(); }
+  function open(){ hideTip(); wrap.classList.add('open'); btn.setAttribute('aria-expanded','true'); poke(); }
   function close(){ wrap.classList.remove('open'); btn.setAttribute('aria-expanded','false'); clearTimeout(closeT); }
   function poke(){ clearTimeout(closeT); closeT=setTimeout(close,4500); }
 
@@ -1831,9 +1874,55 @@
   ['play','pause','volumechange'].forEach(function(ev){ music.addEventListener(ev,sync); });
 
   // appear once the opening doors are done
-  function reveal(){ if(!app.classList.contains('scroll-locked')){ wrap.classList.add('show'); } }
+  // one-time hint that the volume can be changed (disappears on its own, or on the first tap)
+  let tipShown=false, tipT=null;
+  function hideTip(){ clearTimeout(tipT); wrap.classList.remove('tip'); }
+  function showTip(){ wrap.classList.add('tip'); tipT=setTimeout(hideTip,7000); }
+  document.addEventListener('pointerdown',function(){ if(tipShown) hideTip(); });
+  function reveal(){
+    if(!app.classList.contains('scroll-locked')){
+      wrap.classList.add('show');
+      if(!tipShown){ tipShown=true; setTimeout(showTip,1200); }
+    }
+  }
   new MutationObserver(reveal).observe(app,{attributes:true,attributeFilter:['class']});
   reveal(); update(); sync();
+})();
+
+(function(){
+  // A small, friendly "Tap me" label that appears once next to the Haldi flower / Nikah heart,
+  // then fades away on its own (or as soon as the icon is tapped).
+  if(!window.IntersectionObserver) return;
+  const app=document.getElementById('app');
+  function nudge(id,cls){
+    const icon=document.getElementById(id); if(!icon) return;
+    const page=icon.closest('.page');
+    let used=false, wait=null, life=null, tip=null;
+    function hide(){
+      clearTimeout(wait); wait=null; clearTimeout(life);
+      if(tip){ const x=tip; tip=null; x.classList.remove('on'); setTimeout(function(){x.remove();},500); }
+    }
+    function show(){
+      wait=null; if(used||tip) return; used=true;
+      const pr=page.getBoundingClientRect(), ir=icon.getBoundingClientRect();
+      tip=document.createElement('div'); tip.className='tap-tip '+cls; tip.setAttribute('aria-hidden','true');
+      tip.innerHTML='<span class="tt-hand">\uD83D\uDC48</span>Tap me';
+      tip.style.left=(ir.right-pr.left+12)+'px';
+      tip.style.top=(ir.top+ir.height/2-pr.top)+'px';
+      page.appendChild(tip);
+      requestAnimationFrame(function(){ if(tip) tip.classList.add('on'); });
+      life=setTimeout(hide,3600);
+    }
+    icon.addEventListener('click',function(){ used=true; hide(); });
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting&&e.intersectionRatio>=.6){ if(!used&&!wait&&!tip) wait=setTimeout(show,1400); }
+        else{ hide(); }
+      });
+    },{root:app,threshold:[0,.6]}).observe(page);
+  }
+  nudge('haldiFlower','tt-haldi');
+  nudge('nikahHeart','tt-nikah');
 })();
 
 (function(){
@@ -1842,7 +1931,7 @@
   // (first visit, after scrolling manually, or after going back). Manual scrolling restarts the count.
   const app=document.getElementById('app');
   const pages=[...document.querySelectorAll('.page')];
-  const DELAYS=[5000,15000,6000,6000,null];      // ms to rest on each section (null = never auto-scroll)
+  const DELAYS=[5000,12000,5000,5000,null];      // ms to rest on each section (null = never auto-scroll)
   const DURATION=1700;                            // length of the glide in ms
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let ready=false, timer=null, timerIdx=-1, touching=false, idleT=null, tY=0, anim=null;
